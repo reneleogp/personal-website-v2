@@ -105,25 +105,23 @@ const Footer = () => {
       </StyledSocialLinks>
 
       <StyledCredit tabindex="-1">
-        <>
-          <a href="https://github.com/reneleogp/personal-website-v2">
-            <div>Original design by Brittany Chiang</div>
-            <br />
-            <div>Revised by Rene Gonzalez</div>
-            {githubInfo.stars && githubInfo.forks && (
-              <div className="github-stats">
-                <span>
-                  <Icon name="Star" />
-                  <span>{githubInfo.stars.toLocaleString()}</span>
-                </span>
-                <span>
-                  <Icon name="Fork" />
-                  <span>{githubInfo.forks.toLocaleString()}</span>
-                </span>
-              </div>
-            )}
-          </a>
-        </>
+        <a href="https://github.com/reneleogp/personal-website-v2">
+          <div>Original design by Brittany Chiang</div>
+          <br />
+          <div>Revised by Rene Gonzalez</div>
+          {githubInfo.stars && githubInfo.forks && (
+            <div className="github-stats">
+              <span>
+                <Icon name="Star" />
+                <span>{githubInfo.stars.toLocaleString()}</span>
+              </span>
+              <span>
+                <Icon name="Fork" />
+                <span>{githubInfo.forks.toLocaleString()}</span>
+              </span>
+            </div>
+          )}
+        </a>
       </StyledCredit>
     </StyledFooter>
   );
