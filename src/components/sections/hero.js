@@ -46,6 +46,35 @@ const StyledHeroSection = styled.section`
   }
 `;
 
+const StyledText = styled.div`
+  ul.skills-list {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(140px, 200px));
+    grid-gap: 0 10px;
+    padding: 0;
+    margin: 20px 0 0 0;
+    overflow: hidden;
+    list-style: none;
+
+    li {
+      position: relative;
+      margin-bottom: 10px;
+      padding-left: 20px;
+      font-family: var(--font-mono);
+      font-size: var(--fz-xs);
+
+      &:before {
+        content: '▹';
+        position: absolute;
+        left: 0;
+        color: var(--green);
+        font-size: var(--fz-sm);
+        line-height: 12px;
+      }
+    }
+  }
+`;
+
 const Hero = () => {
   const [isMounted, setIsMounted] = useState(false);
   const prefersReducedMotion = usePrefersReducedMotion();
@@ -59,11 +88,17 @@ const Hero = () => {
     return () => clearTimeout(timeout);
   }, []);
 
+  const skills = ['TypeScript', 'React', 'PostgreSQL', 'Google Cloud Vision', 'Jest', 'Python'];
+
+  const skillsComponent = (
+    <ul className="skills-list">{skills && skills.map((skill, i) => <li key={i}>{skill}</li>)}</ul>
+  );
+
   const one = <h1>Hi, my name is</h1>;
-  const two = <h2 className="big-heading">Rene Gonzalez.</h2>;
-  const three = <h3 className="big-heading">A rising Software Engineer</h3>;
+  const two = <h2 className="big-heading">Rene Gonzalez</h2>;
+  const three = <h3 className="big-heading">A Rising Software Engineer</h3>;
   const four = (
-    <>
+    <StyledText>
       <p>
         I'm a Computer Science student at the University of Waterloo. Actively engaged in various
         enriched CS courses, committed to expanding my knowledge and honing my skills.
@@ -73,7 +108,11 @@ const Hero = () => {
         professional growth. I'm always seeking fresh internship opportunities to further my career,
         so <a href="/#contact">feel free to reach out!</a>
       </p>
-    </>
+
+      <p>Here are a few technologies I’ve been working with recently:</p>
+
+      {skillsComponent}
+    </StyledText>
   );
   const five = (
     <a className="email-link" rel="noreferrer" href="/resume.pdf">

@@ -127,6 +127,10 @@ const About = () => {
 
   const skills = ['JavaScript (ES6+)', 'TypeScript', 'React', 'Eleventy', 'Node.js', 'WordPress'];
 
+  const skillsComponent = (
+    <ul className="skills-list">{skills && skills.map((skill, i) => <li key={i}>{skill}</li>)}</ul>
+  );
+
   return (
     <StyledAboutSection id="about" ref={revealContainer}>
       <h2 className="numbered-heading">About Me</h2>
@@ -146,9 +150,7 @@ const About = () => {
 
           <p>Here are a few technologies I’ve been working with recently:</p>
 
-          <ul className="skills-list">
-            {skills && skills.map((skill, i) => <li key={i}>{skill}</li>)}
-          </ul>
+          {skillsComponent}
         </StyledText>
 
         <StyledPic>
