@@ -94,7 +94,16 @@ const Hero = () => {
     return () => clearTimeout(timeout);
   }, []);
 
-  const skills = ['TypeScript', 'React', 'PostgreSQL', 'Google Cloud Vision', 'Jest', 'Python'];
+  const skills = [
+    'TypeScript',
+    'React',
+    'PostgreSQL',
+    'Google Cloud Vision',
+    'Jest',
+    'Python',
+    'C++',
+    'Scala',
+  ];
 
   const skillsComponent = (
     <ul className="skills-list">{skills && skills.map((skill, i) => <li key={i}>{skill}</li>)}</ul>
