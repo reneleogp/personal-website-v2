@@ -95,14 +95,14 @@ const Hero = () => {
   }, []);
 
   const skills = [
+    'PostgreSQL',
+    'MongoDB',
     'TypeScript',
     'React',
-    'PostgreSQL',
-    'Google Cloud Vision',
     'Jest',
     'Python',
     'C++',
-    'Scala',
+    'Google Cloud Vision',
   ];
 
   const skillsComponent = (
