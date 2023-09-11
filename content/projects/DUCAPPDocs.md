@@ -1,6 +1,6 @@
 ---
 date: '2021-02-01'
-title: 'Equalis'
+title: 'DUC APP Documentation'
 external: 'https://devpost.com/software/equalis'
 github: 'https://github.com/WSSSDC/Equalis-API'
 tech:
