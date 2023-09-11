@@ -1,5 +1,5 @@
 ---
-date: '2021-01-01'
+date: '3'
 title: 'ML Game Predictor'
 external: 'https://github.com/reneleogp/ML-Prediction-LoL'
 tech:

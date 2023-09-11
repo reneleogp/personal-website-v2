@@ -1,5 +1,5 @@
 ---
-date: '01'
+date: '1'
 title: 'PyPI Python Package'
 external: 'https://pypi.org/project/pylivecoinwatch'
 github: 'https://github.com/reneleogp/pylivecoinwatch'

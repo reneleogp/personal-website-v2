@@ -1,5 +1,5 @@
 ---
-date: '2021-02-01'
+date: '4'
 title: 'Equalis'
 external: 'https://devpost.com/software/equalis'
 github: 'https://github.com/WSSSDC/Equalis-API'

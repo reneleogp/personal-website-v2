@@ -1,5 +1,5 @@
 ---
-date: '2021-02-01'
+date: '6'
 title: 'DUC APP Documentation'
 external: 'https://apidoc.ducapp.com'
 tech:
