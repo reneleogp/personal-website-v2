@@ -1,8 +1,7 @@
 ---
 date: '2021-02-01'
 title: 'DUC APP Documentation'
-external: 'https://devpost.com/software/equalis'
-github: 'https://github.com/WSSSDC/Equalis-API'
+external: 'https://apidoc.ducapp.com'
 tech:
   - Javascript
   - Postman
