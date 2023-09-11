@@ -27,6 +27,12 @@ const StyledHeroSection = styled.section`
     @media (max-width: 480px) {
       margin: 0 0 20px 2px;
     }
+    :after {
+      content: none;
+    }
+    :before {
+      content: none;
+    }
   }
 
   h3 {
@@ -94,7 +100,7 @@ const Hero = () => {
     <ul className="skills-list">{skills && skills.map((skill, i) => <li key={i}>{skill}</li>)}</ul>
   );
 
-  const one = <h1>Hi, my name is</h1>;
+  const one = <h1 className="numbered-heading">Hi, my name is</h1>;
   const two = <h2 className="big-heading">Rene Gonzalez</h2>;
   const three = <h3 className="big-heading">A Rising Software Engineer</h3>;
   const four = (

@@ -118,6 +118,7 @@ const StyledLinks = styled.div`
     padding: 0;
     margin: 0;
     list-style: none;
+    counter-set: item -1;
 
     li {
       margin: 0 5px;

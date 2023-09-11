@@ -120,6 +120,7 @@ const StyledSidebar = styled.aside`
     margin: 0;
     list-style: none;
     width: 100%;
+    counter-set: item -1;
 
     li {
       position: relative;
