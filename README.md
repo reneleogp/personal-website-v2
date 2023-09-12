@@ -4,12 +4,6 @@
 <h1 align="center">
   Personal Website v2
 </h1>
-<p align="center">
-  The second iteration of <a href="https://reneleo.com" target="_blank">reneleo.com</a> built with <a href="https://www.gatsbyjs.org/" target="_blank">Gatsby</a> and hosted with <a href="https://www.netlify.com/" target="_blank">Netlify</a>
-</p>
-<p align="center">
-  It was originally designed by <a href="https://github.com/bchiang7" target="_blank">Brittany Chiang</a> and can be found <a href="https://brittanychiang.com/" target="_blank">here</a>
-</p>
 <div align="center">
 
 ![Gatsby](https://img.shields.io/badge/Gatsby-663399.svg?style=for-the-badge&logo=Gatsby&logoColor=white)
@@ -66,10 +60,6 @@
    npm run serve
    ```
 
-## 🚨 Forking this repo
-
-If you fork this website, **please attribute it** to the <a href="https://brittanychiang.com/" target="_blank">original author</a>.
-
 ## 🎨 Color Reference
 
 | Color          | Hex                                                                |
@@ -82,3 +72,12 @@ If you fork this website, **please attribute it** to the <a href="https://britta
 | Lightest Slate | ![#ccd6f6](https://via.placeholder.com/10/ccd6f6?text=+) `#ccd6f6` |
 | White          | ![#e6f1ff](https://via.placeholder.com/10/e6f1ff?text=+) `#e6f1ff` |
 | Green          | ![#64ffda](https://via.placeholder.com/10/64ffda?text=+) `#64ffda` |
+
+## Credits
+
+<p>
+  Originally designed by <a href="https://github.com/bchiang7" target="_blank">Brittany Chiang</a> and can be found <a href="https://brittanychiang.com/" target="_blank">here</a>
+
+It has been revised and modified by me.
+
+</p>
