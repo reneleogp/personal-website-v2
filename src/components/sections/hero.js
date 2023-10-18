@@ -130,7 +130,7 @@ const Hero = () => {
     </StyledText>
   );
   const five = (
-    <a className="email-link" rel="noreferrer" href="/resume.pdf">
+    <a className="email-link" rel="noreferrer" href="/Rene_Gonzalez_resume.pdf">
       Check out my resume!
     </a>
   );
