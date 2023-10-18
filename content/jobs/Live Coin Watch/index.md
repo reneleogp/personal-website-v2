@@ -2,7 +2,7 @@
 date: '2022-01-08'
 title: 'Junior Developer Freelancer'
 company: 'Live Coin Watch'
-location: 'Newark, DE, USA (Remote)'
+location: 'Delaware, USA (Remote)'
 range: 'Dec 2021 - Jan 2022'
 url: 'https://www.livecoinwatch.com/'
 ---
