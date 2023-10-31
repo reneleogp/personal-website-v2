@@ -3,12 +3,12 @@ module.exports = {
 
   socialMedia: [
     {
-      name: 'GitHub',
-      url: 'https://github.com/reneleogp',
-    },
-    {
       name: 'Linkedin',
       url: 'https://www.linkedin.com/in/reneleogp',
+    },
+    {
+      name: 'GitHub',
+      url: 'https://github.com/reneleogp',
     },
   ],
 

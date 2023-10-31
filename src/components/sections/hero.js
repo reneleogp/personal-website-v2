@@ -109,19 +109,22 @@ const Hero = () => {
     <ul className="skills-list">{skills && skills.map((skill, i) => <li key={i}>{skill}</li>)}</ul>
   );
 
-  const one = <h1 className="numbered-heading">Hi, my name is</h1>;
+  const one = <h1 className="numbered-heading">Hi, I'm</h1>;
   const two = <h2 className="big-heading">Rene Gonzalez</h2>;
-  const three = <h3 className="big-heading">A Rising Software Engineer</h3>;
+  const three = <h3 className="medium-heading">A Passionate Software Engineer</h3>;
   const four = (
     <StyledText>
       <p>
-        I'm a Computer Science student at the University of Waterloo. Actively engaged in various
-        enriched CS courses, committed to expanding my knowledge and honing my skills.
+        Currently studying Computer Science at the{' '}
+        <a href="https://cs.uwaterloo.ca/" target="_blank" rel="noreferrer">
+          University of Waterloo.
+        </a>
       </p>
       <p>
-        I've gained valuable experience at 3 startups, stoking my desire for continuous learning and
-        professional growth. I'm always seeking fresh internship opportunities to further my career,
-        so <a href="/#contact">feel free to reach out!</a>
+        I've had <a href="/#jobs">4 internships</a>, including experience at 3 startups and a
+        government agency, enhancing my skills across diverse technologies and work environments.
+        I'm always seeking fresh internship opportunities, so{' '}
+        <a href="/#contact">feel free to reach out!</a>
       </p>
 
       <p>Here are a few technologies I’ve been working with recently:</p>
