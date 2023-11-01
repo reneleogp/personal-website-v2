@@ -76,7 +76,7 @@
 ## Credits
 
 <p>
-  Originally designed by <a href="https://github.com/bchiang7" target="_blank">Brittany Chiang</a> and can be found <a href="https://brittanychiang.com/" target="_blank">here</a>
+  Originally designed by <a href="https://brittanychiang.com/" target="_blank">Brittany Chiang</a>
 
 It has been revised and modified by me.
 

@@ -121,12 +121,11 @@ const Hero = () => {
         </a>
       </p>
       <p>
-        I've had <a href="/#jobs">4 internships</a>, including experience at 3 startups and a
-        government agency, enhancing my skills across diverse technologies and work environments.
-        I'm always seeking fresh internship opportunities, so{' '}
-        <a href="/#contact">feel free to reach out!</a>
+        I'm an enthusiastic learner, eager to explore the limitless potential of software
+        development in tackling real-world challenges, with a particular focus on Cybersecurity,
+        Software Innovation and... <br /> Machine Learning (just like everyone in the industry right
+        now).
       </p>
-
       <p>Here are a few technologies I’ve been working with recently:</p>
 
       {skillsComponent}
