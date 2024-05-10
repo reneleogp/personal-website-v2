@@ -7,5 +7,5 @@ range: 'July - Aug 2021'
 url: 'https://www.ducapp.com/'
 ---
 
-- Collaborated with a team of two engineers to redesign the company’s REST API using JavaScript and Node.js, resulting in a 75% increase in third-party company usage
-- Authored the company’s API documentation using Postman and Slate, enhancing communication with partners
+- Increased by 75% external API usage by redesigning the company’s REST API with JavaScript and Node.js.
+- Authored the company’s API documentation using Postman and Slate, enhancing communication with partners.

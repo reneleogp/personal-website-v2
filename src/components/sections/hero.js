@@ -99,7 +99,7 @@ const Hero = () => {
     'MongoDB',
     'TypeScript',
     'React',
-    'Jest',
+    'OpenCV',
     'Python',
     'C++',
     'Google Cloud Vision',
@@ -111,7 +111,7 @@ const Hero = () => {
 
   const one = <h1 className="numbered-heading">Hi, I'm</h1>;
   const two = <h2 className="big-heading">Rene Gonzalez</h2>;
-  const three = <h3 className="medium-heading">A Passionate Software Engineer</h3>;
+  const three = <h3 className="medium-heading">A Passionate Software Developer</h3>;
   const four = (
     <StyledText>
       <p>
@@ -121,10 +121,9 @@ const Hero = () => {
         </a>
       </p>
       <p>
-        I'm an enthusiastic learner, eager to explore the limitless potential of software
-        development in tackling real-world challenges, with a particular focus on Cybersecurity,
-        Software Innovation and... <br /> Machine Learning (just like everyone in the industry right
-        now).
+        I have gained valuable experience through internships at three startups and a government
+        agency, thriving in fast-paced environments. I am always eager to embrace new opportunities
+        for learning and personal growth.
       </p>
       <p>Here are a few technologies I’ve been working with recently:</p>
 

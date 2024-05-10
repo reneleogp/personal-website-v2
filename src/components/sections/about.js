@@ -142,9 +142,10 @@ const About = () => {
 
             <p>
               I thrive in fast-paced environments and have gained valuable experience through
-              internships at three startups. I've served as a Software Engineering Intern at two of
-              these startups and worked as a Junior Developer on freelance projects. I'm always
-              eager to embrace new opportunities for learning and personal growth.
+              internships at three startups and a government agency. I've served as a Software
+              Engineering Intern at two of these startups and worked as a Junior Developer on
+              freelance projects. I'm always eager to embrace new opportunities for learning and
+              personal growth.
             </p>
           </div>
 

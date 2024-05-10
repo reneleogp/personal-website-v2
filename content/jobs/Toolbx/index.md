@@ -7,8 +7,8 @@ range: 'May - Aug 2023'
 url: 'https://www.toolbx.com/'
 ---
 
-- Developed a highly efficient RPA system, leveraging TypeScript and Google Cloud Vision, to automate the processing of thousands of quotes, integrating clients’s legacy software and the company’s modern system
-- Enhanced and optimized PostgreSQL queries to accommodate new functionalities in the Web and REST API, significantly improving performance by up to 25%
-- Effectively communicated the value of 25+ features I developed using TypeScript, React, Cloud Vision API and GraphQL, during daily synchronization meetings and bi-weekly company-wide Tech Demos
-- Utilized Jest to meticulously create tests for every file, function, or feature while updating existing test cases, resulting in a substantial 35% increase in testing speed, significantly elevating software efficiency
-- Implemented pagination and advanced filtering options on the Admin page, significantly boosting productivity for all teams across the organization
+- Automated 10,000+ monthly sales quotes by developing an RPA system with Typescript and Google Cloud Vision, simulating human operations on Windows to enhance efficiency, and reduce costs and errors.
+- Improved performance by 25% on the Web and REST API by enhancing and optimizing PostgreSQL queries.
+- Showcased 25+ features I developed to company stakeholders in daily syncs and bi-weekly tech demos.
+- Boosted software testing speed by 47% using Jest by refining existing tests and expanded test coverage.
+- Enhanced organizational productivity by implementing pagination and advanced filtering on the Admin dashboard.
