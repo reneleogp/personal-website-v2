@@ -1,6 +1,6 @@
 ---
 date: '2022-01-08'
-title: 'Junior Developer Freelancer'
+title: 'Freelance Software Developer'
 company: 'Live Coin Watch'
 location: 'Delaware, USA (Remote)'
 range: 'Dec 2021 - Jan 2022'

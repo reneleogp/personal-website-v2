@@ -1,6 +1,6 @@
 ---
 date: '2024-01-08'
-title: 'Software Developer Intern'
+title: 'Full-Stack Developer Intern'
 company: 'WSIB'
 location: 'Waterloo, ON, Canada'
 range: 'Jan - April 2024'
