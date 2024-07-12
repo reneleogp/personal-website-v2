@@ -3,7 +3,7 @@ date: '2021-08-30'
 title: 'Software Developer Intern'
 company: 'DUC APP'
 location: 'Toronto, ON, Canada'
-range: 'July - Aug 2021'
+range: 'Jul. - Aug. 2021'
 url: 'https://www.ducapp.com/'
 ---
 

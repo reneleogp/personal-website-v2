@@ -3,7 +3,7 @@ date: '2022-01-08'
 title: 'Freelance Software Developer'
 company: 'Live Coin Watch'
 location: 'Delaware, USA (Remote)'
-range: 'Dec 2021 - Jan 2022'
+range: 'Dec. 2021 - Jan. 2022'
 url: 'https://www.livecoinwatch.com/'
 ---
 
