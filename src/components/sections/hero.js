@@ -121,9 +121,9 @@ const Hero = () => {
         </a>
       </p>
       <p>
-        I have gained valuable experience through internships at three startups and a government
-        agency, thriving in fast-paced environments. I am always eager to embrace new opportunities
-        for learning and personal growth.
+        I have gained valuable experience through internships at a unicorn, three startups and a
+        government agency, thriving in fast-paced environments. I am always eager to embrace new
+        opportunities for learning and personal growth.
       </p>
       <p>Here are a few technologies I’ve been working with recently:</p>
 
