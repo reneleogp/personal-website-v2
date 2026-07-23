@@ -5,6 +5,7 @@ import styled from 'styled-components';
 import { navLinks } from '@config';
 import { KEY_CODES } from '@utils';
 import { useOnClickOutside } from '@hooks';
+import ThemeToggle from './themeToggle';
 
 const StyledMenu = styled.div`
   display: none;
@@ -120,24 +121,14 @@ const StyledSidebar = styled.aside`
     margin: 0;
     list-style: none;
     width: 100%;
-    counter-set: item -1;
 
     li {
       position: relative;
       margin: 0 auto 20px;
-      counter-increment: item 1;
       font-size: clamp(var(--fz-sm), 4vw, var(--fz-lg));
 
       @media (max-width: 600px) {
         margin: 0 auto 10px;
-      }
-
-      &:before {
-        content: '0' counter(item) '.';
-        display: block;
-        margin-bottom: 5px;
-        color: var(--green);
-        font-size: var(--fz-sm);
       }
     }
 
@@ -154,6 +145,10 @@ const StyledSidebar = styled.aside`
     margin: 10% auto 0;
     width: max-content;
   }
+
+  .theme-toggle {
+    margin: 25px auto 0;
+  }
 `;
 
 const Menu = () => {
@@ -169,7 +164,10 @@ const Menu = () => {
   let lastFocusableEl;
 
   const setFocusables = () => {
-    menuFocusables = [buttonRef.current, ...Array.from(navRef.current.querySelectorAll('a'))];
+    menuFocusables = [
+      buttonRef.current,
+      ...Array.from(navRef.current.querySelectorAll('a, button')),
+    ];
     firstFocusableEl = menuFocusables[0];
     lastFocusableEl = menuFocusables[menuFocusables.length - 1];
   };
@@ -270,6 +268,8 @@ const Menu = () => {
             <a href="/Rene_Gonzalez_resume.pdf" className="resume-link">
               Resume
             </a>
+
+            <ThemeToggle className="theme-toggle" />
           </nav>
         </StyledSidebar>
       </div>

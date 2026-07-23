@@ -12,6 +12,7 @@ const GlobalStyle = createGlobalStyle`
     box-sizing: border-box;
     width: 100%;
     scroll-behavior: smooth;
+    background-color: var(--navy);
   }
 
   *,
@@ -79,6 +80,7 @@ const GlobalStyle = createGlobalStyle`
     font-family: var(--font-sans);
     font-size: var(--fz-lg);
     line-height: 1.45;
+    transition: background-color 0.25s ease, color 0.25s ease;
 
     @media (max-width: 480px) {
       font-size: var(--fz-md);

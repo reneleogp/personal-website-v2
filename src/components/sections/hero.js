@@ -64,22 +64,25 @@ const StyledHeroSection = styled.section`
   .hero-animation {
     position: absolute;
     z-index: 1;
-    top: 50%;
-    right: -8%;
-    width: min(48vw, 620px);
-    opacity: 0.32;
-    transform: translateY(-50%);
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0.65;
     pointer-events: none;
     user-select: none;
+
+    .cursor-canvas {
+      display: block;
+      width: 100%;
+      height: 100%;
+    }
 
     @media (prefers-reduced-motion: reduce) {
       display: none;
     }
 
     @media (max-width: 768px) {
-      right: 0;
-      width: 85vw;
-      opacity: 0.18;
+      opacity: 0.42;
     }
   }
 `;

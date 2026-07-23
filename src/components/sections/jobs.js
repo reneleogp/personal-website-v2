@@ -10,30 +10,59 @@ const StyledJobsSection = styled.section`
 `;
 
 const StyledTimeline = styled.ol`
+  position: relative;
   padding: 0;
   margin: 0;
-  border-top: 1px solid var(--lightest-navy);
   list-style: none;
+
+  &:before {
+    content: '';
+    position: absolute;
+    top: 10px;
+    bottom: 10px;
+    left: 6px;
+    width: 1px;
+    background-color: var(--lightest-navy);
+  }
 `;
 
 const StyledTimelineItem = styled.li`
+  position: relative;
   display: grid;
   grid-template-columns: minmax(110px, 145px) 1fr;
   gap: 28px;
   align-items: baseline;
-  padding: 20px 0;
-  border-bottom: 1px solid var(--lightest-navy);
+  padding: 0 0 34px 38px;
   transition: var(--transition);
+
+  &:last-child {
+    padding-bottom: 0;
+  }
+
+  &:before {
+    content: '';
+    position: absolute;
+    top: 7px;
+    left: 0;
+    width: 13px;
+    height: 13px;
+    border: 2px solid var(--green);
+    border-radius: 50%;
+    background-color: var(--navy);
+    transition: var(--transition);
+  }
 
   @media (max-width: 600px) {
     grid-template-columns: 1fr;
     gap: 7px;
-    padding: 18px 0;
+    padding: 0 0 28px 34px;
   }
 
   &:hover {
-    padding-left: 10px;
-    border-color: var(--green);
+    &:before {
+      background-color: var(--green);
+      transform: scale(1.12);
+    }
   }
 
   .range {
@@ -106,9 +135,9 @@ const Jobs = () => {
 
   return (
     <StyledJobsSection id="jobs" ref={revealContainer}>
-      <h2 className="numbered-heading">Where I’ve Worked</h2>
+      <h2 className="numbered-heading">Timeline</h2>
 
-      <StyledTimeline>
+      <StyledTimeline aria-label="Work timeline">
         {data.jobs.edges.map(({ node }) => {
           const { company, location, range, url } = node.frontmatter;
 

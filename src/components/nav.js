@@ -8,6 +8,7 @@ import { loaderDelay } from '@utils';
 import { useScrollDirection, usePrefersReducedMotion } from '@hooks';
 import { Menu } from '@components';
 import { IconLogo, IconHex } from '@components/icons';
+import ThemeToggle from './themeToggle';
 
 const StyledHeader = styled.header`
   ${({ theme }) => theme.mixins.flexBetween};
@@ -126,7 +127,6 @@ const StyledLinks = styled.div`
 
       a {
         padding: 10px;
-
       }
     }
   }
@@ -135,6 +135,10 @@ const StyledLinks = styled.div`
     ${({ theme }) => theme.mixins.smallButton};
     margin-left: 15px;
     font-size: var(--fz-xs);
+  }
+
+  .theme-toggle {
+    flex: 0 0 auto;
   }
 `;
 
@@ -220,6 +224,7 @@ const Nav = ({ isHome }) => {
                   ))}
               </ol>
               <div>{ResumeLink}</div>
+              <ThemeToggle className="theme-toggle" />
             </StyledLinks>
 
             <Menu />
@@ -258,6 +263,8 @@ const Nav = ({ isHome }) => {
                   </CSSTransition>
                 )}
               </TransitionGroup>
+
+              <ThemeToggle className="theme-toggle" />
             </StyledLinks>
 
             <TransitionGroup component={null}>
