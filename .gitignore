@@ -1,11 +1,13 @@
-# Project dependencies
-.cache
-node_modules
-yarn-error.log
-package-lock.json
+# Dependencies and generated state
+node_modules/
+.astro/
+.cache/
 
-# Build directory
-/public
-.DS_Store
+# Build output
+dist/
 
+# Local tooling
 .vscode/
+.netlify/
+*.log
+.DS_Store

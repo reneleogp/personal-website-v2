@@ -1,0 +1,25 @@
+main:
+  name: Rene Gonzalez
+  shortBio: Software engineer, builder, and occasional backpacker.
+  location: Toronto, Canada
+  email: reneleogp0305@gmail.com
+  resume: /Rene_Gonzalez_resume.pdf
+  hero:
+    professional: I build practical software across healthcare, government, and early-stage teams.
+    personal: Away from a keyboard, I am usually planning the next backpacking route.
+  workplaces:
+    - name: Commure
+      url: https://www.commure.com/
+    - name: WSIB
+      url: https://www.wsib.ca/
+    - name: Toolbx
+      url: https://www.toolbx.com/
+    - name: Live Coin Watch
+      url: https://www.livecoinwatch.com/
+    - name: DUC APP
+      url: https://www.ducapp.com/
+  social:
+    - name: LinkedIn
+      url: https://www.linkedin.com/in/reneleogp
+    - name: GitHub
+      url: https://github.com/reneleogp

@@ -72,7 +72,7 @@ Dark mode toggle without the flash of default theme. Important bits:
 
 ## JavaScript
 
-```js:title=app.js
+```js title="app.js"
 const themeToggleBtn = document.querySelector('.js-theme-toggle');
 
 themeToggleBtn.addEventListener('click', () => onToggleClick());

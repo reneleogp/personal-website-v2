@@ -1,0 +1,81 @@
+---
+import Footer from '../components/Footer.astro';
+import Header from '../components/Header.astro';
+import '../styles/global.css';
+
+interface Props {
+  title?: string;
+  description?: string;
+  image?: string;
+  type?: 'website' | 'article';
+  schema?: Record<string, unknown> | Array<Record<string, unknown>>;
+  noIndex?: boolean;
+}
+
+const {
+  title = 'Rene Gonzalez',
+  description = 'Software engineer, builder, and occasional backpacker.',
+  image = '/og.png',
+  type = 'website',
+  schema,
+  noIndex = false,
+} = Astro.props;
+
+const siteName = 'Rene Gonzalez';
+const pageTitle = title === siteName ? title : `${title} | ${siteName}`;
+const canonicalUrl = Astro.site ? new URL(Astro.url.pathname, Astro.site) : Astro.url;
+const socialImage = Astro.site ? new URL(image, Astro.site) : new URL(image, Astro.url);
+---
+
+<!doctype html>
+<html lang="en" data-theme="light">
+  <head>
+    <script is:inline>
+      (() => {
+        const param = new URLSearchParams(window.location.search).get("scoutTheme");
+        const theme =
+          param || (window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
+        document.documentElement.setAttribute("data-theme", theme);
+      })();
+    </script>
+    <script is:inline>
+      (() => {
+        const param = new URLSearchParams(window.location.search).get('scoutTheme');
+        const stored = localStorage.getItem('theme');
+        document.documentElement.dataset.theme = param || stored || 'light';
+        document.documentElement.classList.add('js');
+      })();
+    </script>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content={description} />
+    <meta name="generator" content={Astro.generator} />
+    {noIndex && <meta name="robots" content="noindex, nofollow" />}
+    <link rel="canonical" href={canonicalUrl} />
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <link rel="manifest" href="/site.webmanifest" />
+    <link rel="alternate" type="application/rss+xml" title="Rene Gonzalez's writing" href="/rss.xml" />
+
+    <meta property="og:site_name" content={siteName} />
+    <meta property="og:title" content={pageTitle} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content={type} />
+    <meta property="og:url" content={canonicalUrl} />
+    <meta property="og:image" content={socialImage} />
+    <meta property="og:image:alt" content={`${siteName} website preview`} />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={pageTitle} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={socialImage} />
+
+    <title>{pageTitle}</title>
+    {schema && <script type="application/ld+json" set:html={JSON.stringify(schema)}></script>}
+  </head>
+  <body>
+    <a class="skip-link" href="#main-content">Skip to content</a>
+    <Header />
+    <slot />
+    <Footer />
+  </body>
+</html>

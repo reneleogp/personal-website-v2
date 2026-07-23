@@ -1,0 +1,41 @@
+---
+import { getCollection } from 'astro:content';
+import TimelineExplorer from './timeline/TimelineExplorer';
+
+const entries = (await getCollection('timeline', ({ data }) => !data.draft && data.featured)).sort(
+  (first, second) => first.data.startDate.valueOf() - second.data.startDate.valueOf(),
+);
+
+const timelineItems = entries.map(entry => ({
+  id: entry.id,
+  title: entry.data.title,
+  organization: entry.data.organization,
+  role: entry.data.role,
+  startDate: entry.data.startDate.toISOString(),
+  dateLabel: entry.data.dateLabel,
+  kind: entry.data.kind,
+  summary: entry.data.summary,
+  details: entry.data.details,
+  location: entry.data.location,
+  media:
+    entry.data.media.kind === 'image'
+      ? { ...entry.data.media, src: entry.data.media.src.src }
+      : entry.data.media.kind === 'video' && entry.data.media.poster
+        ? { ...entry.data.media, poster: entry.data.media.poster.src }
+        : entry.data.media,
+  notes: entry.data.notes,
+  links: entry.data.links,
+}));
+---
+
+<section class="timeline-section" id="timeline" aria-labelledby="timeline-title">
+  <div class="section-intro">
+    <p class="section-index" aria-hidden="true">01 / FIELD LOG</p>
+    <h2 id="timeline-title">Life, in progress.</h2>
+    <p>
+      Work, places, and the useful detours between them. Select an entry or keep scrolling to
+      move through the story.
+    </p>
+  </div>
+  <TimelineExplorer items={timelineItems} client:visible />
+</section>

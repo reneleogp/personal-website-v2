@@ -1,0 +1,43 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { postPath, slugify } from '../../utils/slug';
+
+const posts = (await getCollection('writing', ({ data }) => !data.draft)).sort(
+  (first, second) => second.data.date.valueOf() - first.data.date.valueOf(),
+);
+---
+
+<BaseLayout title="Notebook" description="Technical notes and things worth remembering by Rene Gonzalez.">
+  <main id="main-content" class="notebook-page">
+    <header class="page-header">
+      <p class="section-index">THE NOTEBOOK</p>
+      <h1>Things worth remembering.</h1>
+      <p>Short notes from building software, fixing mistakes, and keeping the useful parts.</p>
+    </header>
+    <div class="notebook-list">
+      {
+        posts.map((post, index) => (
+          <article>
+            <span class="project-number" aria-hidden="true">{String(index + 1).padStart(2, '0')}</span>
+            <time datetime={post.data.date.toISOString()}>
+              {post.data.date.toLocaleDateString('en-CA', {
+                year: 'numeric',
+                month: 'short',
+                day: 'numeric',
+              })}
+            </time>
+            <div>
+              <h2><a href={postPath(post.data.slug)}>{post.data.title}</a></h2>
+              <p>{post.data.description}</p>
+              <div class="tag-list" aria-label={`Tags for ${post.data.title}`}>
+                {post.data.tags.map(tag => <a href={`/pensieve/tags/${slugify(tag)}/`}>{tag}</a>)}
+              </div>
+            </div>
+            <span aria-hidden="true">↗</span>
+          </article>
+        ))
+      }
+    </div>
+  </main>
+</BaseLayout>

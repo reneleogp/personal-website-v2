@@ -1,0 +1,37 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import { render } from 'astro:content';
+
+interface Props {
+  project: CollectionEntry<'projects'>;
+  index: number;
+}
+
+const { project, index } = Astro.props;
+const { Content } = await render(project);
+const primaryUrl = project.data.external || project.data.github;
+---
+
+<article class="project-row">
+  <span class="project-number" aria-hidden="true">{String(index + 1).padStart(2, '0')}</span>
+  <div class="project-main">
+    <p class="project-context">
+      {project.data.company || 'Independent'}
+      <span aria-hidden="true"> · </span>
+      {project.data.date}
+    </p>
+    <h2>
+      {primaryUrl ? <a href={primaryUrl}>{project.data.title}</a> : project.data.title}
+    </h2>
+    <div class="project-description"><Content /></div>
+  </div>
+  <ul class="project-tech" aria-label="Technologies">
+    {project.data.tech.map(technology => <li>{technology}</li>)}
+  </ul>
+  <div class="project-actions">
+    {project.data.github && <a href={project.data.github} aria-label={`${project.data.title} source code`}>Code ↗</a>}
+    {project.data.external && <a href={project.data.external} aria-label={`Visit ${project.data.title}`}>Visit ↗</a>}
+    {project.data.ios && <a href={project.data.ios} aria-label={`${project.data.title} on the App Store`}>iOS ↗</a>}
+    {project.data.android && <a href={project.data.android} aria-label={`${project.data.title} on Google Play`}>Android ↗</a>}
+  </div>
+</article>

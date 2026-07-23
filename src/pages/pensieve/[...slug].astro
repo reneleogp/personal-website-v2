@@ -1,0 +1,31 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import { getCollection, render } from 'astro:content';
+import WritingLayout from '../../layouts/WritingLayout.astro';
+import { postPath } from '../../utils/slug';
+
+export async function getStaticPaths() {
+  const posts = await getCollection('writing', ({ data }) => !data.draft);
+
+  return posts.map(post => ({
+    params: { slug: post.data.slug.replace(/^\/pensieve\//, '').replace(/\/$/, '') },
+    props: { post },
+  }));
+}
+
+interface Props {
+  post: CollectionEntry<'writing'>;
+}
+
+const { post } = Astro.props;
+const { Content } = await render(post);
+---
+
+<WritingLayout
+  title={post.data.title}
+  description={post.data.description}
+  publishedAt={post.data.date}
+  tags={post.data.tags}
+  canonicalPath={postPath(post.data.slug)}>
+  <Content />
+</WritingLayout>

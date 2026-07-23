@@ -1,0 +1,26 @@
+---
+import { getCollection } from 'astro:content';
+import ProjectRow from '../components/ProjectRow.astro';
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const projects = (await getCollection('projects', ({ data }) => data.showInProjects)).sort((first, second) => {
+  const firstDate = Number.parseInt(first.data.date, 10);
+  const secondDate = Number.parseInt(second.data.date, 10);
+  return Number.isNaN(firstDate) || Number.isNaN(secondDate) ? 0 : secondDate - firstDate;
+});
+---
+
+<BaseLayout
+  title="Projects"
+  description="Selected software projects and experiments by Rene Gonzalez.">
+  <main id="main-content" class="archive-page">
+    <header class="page-header">
+      <p class="section-index">PROJECT INDEX</p>
+      <h1>Built, shipped, learned.</h1>
+      <p>A working archive of products, experiments, and useful side quests.</p>
+    </header>
+    <div class="project-list">
+      {projects.map((project, index) => <ProjectRow project={project} index={index} />)}
+    </div>
+  </main>
+</BaseLayout>

@@ -52,7 +52,7 @@ class FlavorForm extends React.Component { // highlight-line
 }
 ```
 
-```javascript:title=highlight.js
+```javascript title="highlight.js"
 // Here is a comment
 function $initHighlight(block, cls) {
   try {
