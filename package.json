@@ -19,6 +19,7 @@
     "build": "astro check && astro build",
     "preview": "astro preview",
     "check": "astro check",
+    "new:timeline": "node scripts/new-timeline-entry.mjs",
     "verify:build": "node scripts/verify-build.mjs",
     "format": "prettier --write .",
     "format:check": "prettier --check ."

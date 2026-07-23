@@ -5,7 +5,7 @@ import WritingLayout from '../../layouts/WritingLayout.astro';
 import { postPath } from '../../utils/slug';
 
 export async function getStaticPaths() {
-  const posts = await getCollection('writing', ({ data }) => !data.draft);
+  const posts = await getCollection('writing');
 
   return posts.map(post => ({
     params: { slug: post.data.slug.replace(/^\/pensieve\//, '').replace(/\/$/, '') },
@@ -26,6 +26,7 @@ const { Content } = await render(post);
   description={post.data.description}
   publishedAt={post.data.date}
   tags={post.data.tags}
-  canonicalPath={postPath(post.data.slug)}>
+  canonicalPath={postPath(post.data.slug)}
+  noIndex={post.data.draft}>
   <Content />
 </WritingLayout>

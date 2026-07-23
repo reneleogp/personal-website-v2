@@ -29,6 +29,7 @@ Open `http://localhost:4321`.
 | `npm run dev` | Start Astro's development server |
 | `npm run check` | Validate Astro and TypeScript |
 | `npm run build` | Create the production site in `dist/` |
+| `npm run new:timeline -- 2026-example "Event title"` | Create a draft timeline entry |
 | `npm run verify:build` | Verify preserved routes, assets, and homepage metadata |
 | `npm run preview` | Serve the production output locally |
 | `npm run format` | Format source and content files |

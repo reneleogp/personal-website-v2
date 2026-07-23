@@ -7,9 +7,10 @@ interface Props {
   publishedAt: Date;
   tags: string[];
   canonicalPath: string;
+  noIndex?: boolean;
 }
 
-const { title, description, publishedAt, tags, canonicalPath } = Astro.props;
+const { title, description, publishedAt, tags, canonicalPath, noIndex = false } = Astro.props;
 const canonicalUrl = new URL(canonicalPath, Astro.site ?? Astro.url);
 const schema = {
   '@context': 'https://schema.org',
@@ -26,7 +27,7 @@ const schema = {
 };
 ---
 
-<BaseLayout title={title} description={description} type="article" schema={schema}>
+<BaseLayout title={title} description={description} type="article" schema={schema} noIndex={noIndex}>
   <main id="main-content" class="article-page">
     <article>
       <header class="article-header">
