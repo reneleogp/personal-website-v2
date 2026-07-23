@@ -1,5 +1,5 @@
 ---
-title: Infrastructure at healthcare scale
+title: Joined Commure
 organization: Commure
 role: Software Engineer Intern
 startDate: 2024-09-01

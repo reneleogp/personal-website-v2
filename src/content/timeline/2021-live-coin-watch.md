@@ -1,5 +1,5 @@
 ---
-title: Code that travelled further
+title: Worked with Live Coin Watch
 organization: Live Coin Watch
 role: Freelance Software Developer
 startDate: 2021-12-01

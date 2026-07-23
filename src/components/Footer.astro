@@ -7,12 +7,11 @@ const year = new Date().getFullYear();
 
 <footer class="site-footer">
   <div class="footer-inner">
-    <p>Built with care and a preference for the long way around.</p>
+    <small>&copy; {year} Rene Gonzalez</small>
     <div class="footer-links" aria-label="Contact and social links">
       {profile?.data.social.map(item => <a href={item.url}>{item.name}</a>)}
       {profile && <a href={`mailto:${profile.data.email}`}>Email</a>}
       {profile && <a href={profile.data.resume}>Resume</a>}
     </div>
-    <small>&copy; {year} Rene Gonzalez</small>
   </div>
 </footer>

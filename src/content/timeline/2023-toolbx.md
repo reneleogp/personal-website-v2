@@ -1,5 +1,5 @@
 ---
-title: Automating the stubborn parts
+title: Joined Toolbx
 organization: Toolbx
 role: Software Engineer Intern
 startDate: 2023-05-01

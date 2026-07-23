@@ -1,4 +1,4 @@
-import { AnimatePresence, motion, useInView, useReducedMotion } from 'motion/react';
+import { AnimatePresence, motion, useReducedMotion } from 'motion/react';
 import { ExternalLink, MapPin } from 'lucide-react';
 import { useEffect, useRef, useState } from 'react';
 
@@ -39,12 +39,8 @@ type TimelineItem = {
   id: string;
   title: string;
   organization?: string;
-  role?: string;
   startDate: string;
-  dateLabel: string;
   kind: 'work' | 'education' | 'project' | 'travel' | 'life';
-  summary: string;
-  details: string[];
   location: {
     label: string;
     coordinates?: [number, number];
@@ -64,7 +60,7 @@ function StaticMap({ label }: { label: string }) {
       <div className="map-fallback-grid" aria-hidden="true" />
       <span className="map-fallback-route" aria-hidden="true" />
       <span className="map-pin" aria-hidden="true">
-        <MapPin size={24} />
+        <MapPin size={18} />
       </span>
       <span className="map-label">{label}</span>
     </div>
@@ -112,9 +108,7 @@ function InteractiveMap({ media, reducedMotion }: { media: MapMedia | RouteMedia
           .trim();
 
         if (media.kind === 'map') {
-          new maplibregl.Marker({ color: accentColor })
-            .setLngLat(media.coordinates)
-            .addTo(map);
+          new maplibregl.Marker({ color: accentColor }).setLngLat(media.coordinates).addTo(map);
         } else {
           map.addSource('route', {
             type: 'geojson',
@@ -130,15 +124,15 @@ function InteractiveMap({ media, reducedMotion }: { media: MapMedia | RouteMedia
             source: 'route',
             paint: {
               'line-color': accentColor,
-              'line-width': 4,
-              'line-opacity': 0.9,
+              'line-width': 3,
+              'line-opacity': 0.85,
             },
           });
           const bounds = media.coordinates.reduce(
             (currentBounds, coordinate) => currentBounds.extend(coordinate),
             new maplibregl.LngLatBounds(media.coordinates[0], media.coordinates[0]),
           );
-          map.fitBounds(bounds, { padding: 64, duration: reducedMotion ? 0 : 700 });
+          map.fitBounds(bounds, { padding: 32, duration: reducedMotion ? 0 : 500 });
         }
         setLoaded(true);
       });
@@ -156,197 +150,114 @@ function InteractiveMap({ media, reducedMotion }: { media: MapMedia | RouteMedia
     <div className="interactive-map-shell">
       {!loaded && <StaticMap label={media.label} />}
       <div className="interactive-map" ref={containerRef} aria-hidden="true" />
-      <span className="map-location-label">
-        <MapPin size={15} aria-hidden="true" />
-        {media.label}
-      </span>
     </div>
   );
 }
 
-function MediaPanel({ item, reducedMotion }: { item: TimelineItem; reducedMotion: boolean }) {
+function Media({ item, interactive = false }: { item: TimelineItem; interactive?: boolean }) {
+  const reducedMotion = Boolean(useReducedMotion());
   const media = item.media;
 
-  return (
-    <div className="media-panel" id={`media-${item.id}`} aria-label={`Media for ${item.title}`}>
-      {media.kind === 'map' || media.kind === 'route' ? (
-        <InteractiveMap media={media} reducedMotion={reducedMotion} />
-      ) : media.kind === 'image' ? (
-        <figure>
-          <img src={media.src} alt={media.alt} loading="lazy" />
-          {media.caption && <figcaption>{media.caption}</figcaption>}
-        </figure>
-      ) : (
-        <figure>
-          <video controls muted playsInline preload="metadata" poster={media.poster}>
-            <source src={media.src} />
-          </video>
-          {media.caption && <figcaption>{media.caption}</figcaption>}
-        </figure>
-      )}
-
-      {item.notes
-        .filter(note => note.placement === 'media')
-        .map(note => (
-          <aside className={`sticky-note sticky-note-${note.tone} sticky-note-media`} key={note.text}>
-            {note.text}
-          </aside>
-        ))}
-    </div>
-  );
-}
-
-function MobileMedia({ item }: { item: TimelineItem }) {
-  const media = item.media;
+  if (media.kind === 'map' || media.kind === 'route') {
+    return interactive ? (
+      <InteractiveMap media={media} reducedMotion={reducedMotion} />
+    ) : (
+      <StaticMap label={media.label} />
+    );
+  }
 
   if (media.kind === 'image') {
     return <img src={media.src} alt={media.alt} loading="lazy" />;
   }
 
-  if (media.kind === 'video') {
-    return (
-      <video controls muted playsInline preload="metadata" poster={media.poster}>
-        <source src={media.src} />
-      </video>
-    );
-  }
-
-  return <StaticMap label={media.label} />;
+  return (
+    <video controls muted playsInline preload="metadata" poster={media.poster}>
+      <source src={media.src} />
+    </video>
+  );
 }
 
-function TimelineEntry({
-  item,
-  active,
-  onActivate,
-  reducedMotion,
-}: {
-  item: TimelineItem;
-  active: boolean;
-  onActivate: (id: string) => void;
-  reducedMotion: boolean;
-}) {
-  const ref = useRef<HTMLElement>(null);
-  const isInView = useInView(ref, { margin: '-35% 0px -50% 0px' });
-
-  useEffect(() => {
-    if (isInView) onActivate(item.id);
-  }, [isInView, item.id, onActivate]);
-
-  return (
-    <motion.article
-      ref={ref}
-      className="timeline-entry"
-      data-active={active}
-      initial={reducedMotion ? false : { opacity: 0.5, y: 20 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, amount: 0.25 }}
-      onMouseEnter={() => onActivate(item.id)}>
-      <div className="timeline-rail" aria-hidden="true">
-        <span className="timeline-dot" />
-      </div>
-
-      <div className="timeline-entry-body">
-        <div className="timeline-meta">
-          <time dateTime={item.startDate}>{item.dateLabel}</time>
-          <span>{item.kind}</span>
-        </div>
-        <h3>
-          <button
-            type="button"
-            aria-pressed={active}
-            aria-controls={`media-${item.id}`}
-            onClick={() => onActivate(item.id)}
-            onFocus={() => onActivate(item.id)}>
-            {item.title}
-          </button>
-        </h3>
-        {(item.role || item.organization) && (
-          <p className="timeline-role">
-            {item.role}
-            {item.role && item.organization && <span aria-hidden="true"> · </span>}
-            {item.organization}
-          </p>
-        )}
-        <p className="timeline-summary">{item.summary}</p>
-        <p className="timeline-location">
-          <MapPin size={15} aria-hidden="true" />
-          {item.location.label}
-        </p>
-
-        <div className="timeline-mobile-media">
-          <MobileMedia item={item} />
-        </div>
-
-        {item.details.length > 0 && (
-          <ul className="timeline-details">
-            {item.details.map(detail => (
-              <li key={detail}>{detail}</li>
-            ))}
-          </ul>
-        )}
-
-        {item.notes
-          .filter(note => note.placement !== 'media')
-          .map(note => (
-            <aside className={`sticky-note sticky-note-${note.tone}`} key={note.text}>
-              {note.text}
-            </aside>
-          ))}
-
-        {item.links.length > 0 && (
-          <div className="timeline-links">
-            {item.links.map(link => (
-              <a href={link.url} key={link.url}>
-                {link.label}
-                <ExternalLink size={14} aria-hidden="true" />
-              </a>
-            ))}
-          </div>
-        )}
-      </div>
-    </motion.article>
-  );
+function formatMonth(date: string) {
+  return new Date(date).toLocaleDateString('en-US', { month: 'short', timeZone: 'UTC' });
 }
 
 export default function TimelineExplorer({ items }: Props) {
   const [activeId, setActiveId] = useState(items[0]?.id);
   const reducedMotion = Boolean(useReducedMotion());
   const activeItem = items.find(item => item.id === activeId) ?? items[0];
+  const groups = items.reduce<Array<{ year: string; items: TimelineItem[] }>>((result, item) => {
+    const year = String(new Date(item.startDate).getUTCFullYear());
+    const existing = result.find(group => group.year === year);
+    if (existing) existing.items.push(item);
+    else result.push({ year, items: [item] });
+    return result;
+  }, []);
 
   if (!activeItem) return null;
 
   return (
-    <div className="timeline-explorer">
-      <div className="timeline-list">
-        {items.map(item => (
-          <TimelineEntry
-            item={item}
-            active={item.id === activeItem.id}
-            onActivate={setActiveId}
-            reducedMotion={reducedMotion}
-            key={item.id}
-          />
+    <div className="compact-timeline">
+      <div className="timeline-groups">
+        {groups.map(group => (
+          <section className="timeline-year" aria-labelledby={`year-${group.year}`} key={group.year}>
+            <h3 id={`year-${group.year}`}>{group.year}</h3>
+            <div>
+              {group.items.map(item => {
+                const active = item.id === activeItem.id;
+                return (
+                  <div className="timeline-item" key={item.id}>
+                    <button
+                      type="button"
+                      className="timeline-row"
+                      aria-pressed={active}
+                      aria-controls="timeline-preview"
+                      onMouseEnter={() => setActiveId(item.id)}
+                      onFocus={() => setActiveId(item.id)}
+                      onClick={() => setActiveId(item.id)}>
+                      <time dateTime={item.startDate}>{formatMonth(item.startDate)}</time>
+                      <span>{item.title}</span>
+                    </button>
+                    {active && (
+                      <div className="timeline-inline-preview">
+                        <Media item={item} />
+                        <p>{item.location.label}</p>
+                      </div>
+                    )}
+                  </div>
+                );
+              })}
+            </div>
+          </section>
         ))}
       </div>
 
-      <div className="timeline-stage-column">
-        <div className="timeline-stage">
-          <AnimatePresence mode="wait" initial={false}>
-            <motion.div
-              key={activeItem.id}
-              initial={reducedMotion ? { opacity: 0 } : { opacity: 0, y: 12 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={reducedMotion ? { opacity: 0 } : { opacity: 0, y: -8 }}
-              transition={{ duration: reducedMotion ? 0.1 : 0.32 }}>
-              <MediaPanel item={activeItem} reducedMotion={reducedMotion} />
-            </motion.div>
-          </AnimatePresence>
-          <p className="stage-caption">
-            <span>{activeItem.dateLabel}</span>
-            {activeItem.title}
-          </p>
-        </div>
-      </div>
+      <aside className="timeline-preview" id="timeline-preview" aria-live="polite">
+        <AnimatePresence mode="wait" initial={false}>
+          <motion.div
+            key={activeItem.id}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: reducedMotion ? 0 : 0.18 }}>
+            <div className="timeline-preview-media">
+              <Media item={activeItem} interactive />
+            </div>
+            <div className="timeline-preview-caption">
+              <span>{activeItem.location.label}</span>
+              {activeItem.links[0] && (
+                <a href={activeItem.links[0].url} aria-label={`Visit ${activeItem.links[0].label}`}>
+                  <ExternalLink size={13} aria-hidden="true" />
+                </a>
+              )}
+            </div>
+            {activeItem.notes.map(note => (
+              <aside className={`timeline-note timeline-note-${note.tone}`} key={note.text}>
+                {note.text}
+              </aside>
+            ))}
+          </motion.div>
+        </AnimatePresence>
+      </aside>
     </div>
   );
 }

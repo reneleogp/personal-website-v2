@@ -4,26 +4,21 @@ import { render } from 'astro:content';
 
 interface Props {
   project: CollectionEntry<'projects'>;
-  index: number;
 }
 
-const { project, index } = Astro.props;
+const { project } = Astro.props;
 const { Content } = await render(project);
 const primaryUrl = project.data.external || project.data.github;
 ---
 
 <article class="project-row">
-  <span class="project-number" aria-hidden="true">{String(index + 1).padStart(2, '0')}</span>
   <div class="project-main">
-    <p class="project-context">{project.data.company || 'Independent project'}</p>
     <h2>
       {primaryUrl ? <a href={primaryUrl}>{project.data.title}</a> : project.data.title}
     </h2>
     <div class="project-description"><Content /></div>
+    {project.data.tech.length > 0 && <p class="project-tech">{project.data.tech.join(' · ')}</p>}
   </div>
-  <ul class="project-tech" aria-label="Technologies">
-    {project.data.tech.map(technology => <li>{technology}</li>)}
-  </ul>
   <div class="project-actions">
     {project.data.github && <a href={project.data.github} aria-label={`${project.data.title} source code`}>Code ↗</a>}
     {project.data.external && <a href={project.data.external} aria-label={`Visit ${project.data.title}`}>Visit ↗</a>}

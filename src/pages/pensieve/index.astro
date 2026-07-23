@@ -11,9 +11,8 @@ const posts = (await getCollection('writing', ({ data }) => !data.draft)).sort(
 <BaseLayout title="Notebook" description="Technical notes and things worth remembering by Rene Gonzalez.">
   <main id="main-content" class="notebook-page">
     <header class="page-header">
-      <p class="section-index">THE NOTEBOOK</p>
-      <h1>Things worth remembering.</h1>
-      <p>Short notes from building software, fixing mistakes, and keeping the useful parts.</p>
+      <h1>Notes</h1>
+      <p>Occasional notes about software and things I want to remember.</p>
     </header>
     <div class="notebook-list">
       {

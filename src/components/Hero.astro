@@ -1,5 +1,6 @@
 ---
 import { getEntry } from 'astro:content';
+import BackgroundCanvas from './BackgroundCanvas';
 
 const profile = await getEntry('profile', 'main');
 
@@ -9,37 +10,32 @@ if (!profile) {
 ---
 
 <section class="hero" aria-labelledby="hero-title">
-  <div class="hero-grid" aria-hidden="true"></div>
+  <BackgroundCanvas client:load />
   <div class="hero-inner">
-    <p class="eyebrow">Software engineer · {profile.data.location}</p>
     <h1 id="hero-title">{profile.data.name}</h1>
-    <div class="hero-copy">
-      <p>{profile.data.hero.professional}</p>
-      <p class="hero-personal">{profile.data.hero.personal}</p>
-    </div>
+    <p class="hero-copy">
+      I am a software engineer based in {profile.data.location}. {profile.data.hero.professional}
+      {' '}{profile.data.hero.personal}
+    </p>
 
     <p class="workplaces">
-      <span>Previously</span>
+      I have worked at{' '}
       {
         profile.data.workplaces.map((workplace, index) => (
           <>
             <a href={workplace.url}>{workplace.name}</a>
-            {index < profile.data.workplaces.length - 1 && <span aria-hidden="true"> / </span>}
+            {index < profile.data.workplaces.length - 2 && <span aria-hidden="true">, </span>}
+            {index === profile.data.workplaces.length - 2 && <span aria-hidden="true">, and </span>}
           </>
         ))
       }
+      .
     </p>
 
-    <div class="hero-actions">
-      <a class="text-link" href="#timeline">Follow the timeline <span aria-hidden="true">↓</span></a>
-      <a class="text-link text-link-muted" href={profile.data.resume}>Resume <span aria-hidden="true">↗</span></a>
-    </div>
-
-    <div class="field-mark" aria-hidden="true">
-      <span>43.6532 N</span>
-      <span>79.3832 W</span>
-      <span class="field-mark-line"></span>
-      <span>FIELD NOTES / 03</span>
+    <div class="hero-links" aria-label="Profile links">
+      {profile.data.social.map(item => <a href={item.url}>{item.name}</a>)}
+      <a href={`mailto:${profile.data.email}`}>Email</a>
+      <a href={profile.data.resume}>Resume</a>
     </div>
   </div>
 </section>

@@ -1,5 +1,5 @@
 ---
-title: First production APIs
+title: Joined DUC APP
 organization: DUC APP
 role: Software Developer Intern
 startDate: 2021-07-01

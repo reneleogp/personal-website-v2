@@ -43,7 +43,11 @@ if (missingPaths.length > 0) {
 const homepage = await readFile(path.join(root, 'dist/index.html'), 'utf8');
 const requiredHomepageContent = [
   'Rene Gonzalez',
-  'Life, in progress.',
+  'I have worked at',
+  'Timeline',
+  'Projects',
+  'Notes',
+  'Joined Commure',
   'Commure',
   'application/ld+json',
   'rel="canonical"',
@@ -55,8 +59,18 @@ for (const content of requiredHomepageContent) {
   }
 }
 
-if (homepage.includes('A Passionate Software Developer')) {
-  throw new Error('Legacy hero content leaked into the v3 build.');
+const forbiddenHomepageContent = [
+  'A Passionate Software Developer',
+  'Life, in progress.',
+  'Software Engineer Intern',
+  'Full-Stack Developer Intern',
+  'Centralized filtering for a platform',
+];
+
+for (const content of forbiddenHomepageContent) {
+  if (homepage.includes(content)) {
+    throw new Error(`Removed portfolio detail leaked into the homepage: ${content}`);
+  }
 }
 
 console.log(`Verified ${requiredPaths.length + 1} required outputs and homepage metadata.`);

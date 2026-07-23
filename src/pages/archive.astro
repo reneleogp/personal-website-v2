@@ -15,12 +15,11 @@ const projects = (await getCollection('projects', ({ data }) => data.showInProje
   description="Selected software projects and experiments by Rene Gonzalez.">
   <main id="main-content" class="archive-page">
     <header class="page-header">
-      <p class="section-index">PROJECT INDEX</p>
-      <h1>Built, shipped, learned.</h1>
-      <p>A working archive of products, experiments, and useful side quests.</p>
+      <h1>Projects</h1>
+      <p>Things I have built, shipped, or learned from.</p>
     </header>
     <div class="project-list">
-      {projects.map((project, index) => <ProjectRow project={project} index={index} />)}
+      {projects.map(project => <ProjectRow project={project} />)}
     </div>
   </main>
 </BaseLayout>
