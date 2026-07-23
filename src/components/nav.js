@@ -17,7 +17,7 @@ const StyledHeader = styled.header`
   padding: 0px 50px;
   width: 100%;
   height: var(--nav-scroll-height);
-  background-color: rgba(10, 25, 47, 0.85);
+  background-color: rgba(var(--navy-rgb), 0.88);
   filter: none !important;
   pointer-events: auto !important;
   user-select: auto !important;
@@ -36,7 +36,7 @@ const StyledHeader = styled.header`
     props.scrollDirection === 'up' &&
       !props.scrolledToTop &&
       css`
-        background-color: rgba(10, 25, 47, 0.85);
+        background-color: rgba(var(--navy-rgb), 0.88);
         box-shadow: 0 10px 30px -10px var(--navy-shadow);
       `};
 
@@ -118,24 +118,15 @@ const StyledLinks = styled.div`
     padding: 0;
     margin: 0;
     list-style: none;
-    counter-set: item -1;
 
     li {
       margin: 0 5px;
       position: relative;
-      counter-increment: item 1;
       font-size: var(--fz-xs);
 
       a {
         padding: 10px;
 
-        &:before {
-          content: '0' counter(item) '.';
-          margin-right: 5px;
-          color: var(--green);
-          font-size: var(--fz-xxs);
-          text-align: right;
-        }
       }
     }
   }

@@ -10,16 +10,7 @@ import { usePrefersReducedMotion } from '@hooks';
 const StyledProjectsSection = styled.section`
   display: flex;
   flex-direction: column;
-  align-items: center;
-
-  h2 {
-    font-size: clamp(24px, 5vw, var(--fz-heading));
-    justify-content: center;
-
-    :after {
-      content: none;
-    }
-  }
+  align-items: stretch;
 
   .archive-link {
     font-family: var(--font-mono);
@@ -32,13 +23,13 @@ const StyledProjectsSection = styled.section`
   .projects-grid {
     ${({ theme }) => theme.mixins.resetList};
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-    grid-gap: 15px;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-gap: 14px;
     position: relative;
-    margin-top: 10px;
+    margin-top: 0;
 
-    @media (max-width: 1080px) {
-      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    @media (max-width: 700px) {
+      grid-template-columns: 1fr;
     }
   }
 
@@ -57,7 +48,7 @@ const StyledProject = styled.li`
     &:hover,
     &:focus-within {
       .project-inner {
-        transform: translateY(-7px);
+        transform: translateY(-4px);
       }
     }
   }
@@ -68,30 +59,31 @@ const StyledProject = styled.li`
   }
 
   .project-inner {
-    ${({ theme }) => theme.mixins.boxShadow};
     ${({ theme }) => theme.mixins.flexBetween};
     flex-direction: column;
     align-items: flex-start;
     position: relative;
     height: 100%;
-    padding: 2rem 1.75rem;
+    min-height: 250px;
+    padding: 24px;
+    border: 1px solid var(--lightest-navy);
     border-radius: var(--border-radius);
-    background-color: var(--light-navy);
+    background-color: transparent;
     transition: var(--transition);
-    overflow: auto;
+    overflow: hidden;
+
+    &:hover,
+    &:focus-within {
+      border-color: var(--green);
+      background-color: var(--green-tint);
+    }
   }
 
   .project-top {
-    ${({ theme }) => theme.mixins.flexBetween};
-    margin-bottom: 35px;
-
-    .folder {
-      color: var(--green);
-      svg {
-        width: 40px;
-        height: 40px;
-      }
-    }
+    display: flex;
+    justify-content: flex-end;
+    min-height: 28px;
+    margin-bottom: 12px;
 
     .project-links {
       display: flex;
@@ -120,9 +112,9 @@ const StyledProject = styled.li`
   }
 
   .project-title {
-    margin: 0 0 10px;
+    margin: 0 0 8px;
     color: var(--lightest-slate);
-    font-size: var(--fz-xxl);
+    font-size: var(--fz-xl);
 
     a {
       position: static;
@@ -142,7 +134,15 @@ const StyledProject = styled.li`
 
   .project-description {
     color: var(--light-slate);
-    font-size: 17px;
+    font-size: var(--fz-md);
+    line-height: 1.45;
+
+    p {
+      display: -webkit-box;
+      overflow: hidden;
+      -webkit-box-orient: vertical;
+      -webkit-line-clamp: 4;
+    }
 
     a {
       ${({ theme }) => theme.mixins.inlineLink};
@@ -160,7 +160,8 @@ const StyledProject = styled.li`
 
     li {
       font-family: var(--font-mono);
-      font-size: var(--fz-xxs);
+      color: var(--slate);
+      font-size: 11px;
       line-height: 1.75;
 
       &:not(:last-of-type) {
@@ -225,9 +226,6 @@ const Projects = () => {
       <div className="project-inner">
         <header>
           <div className="project-top">
-            <div className="folder">
-              <Icon name="Folder" />
-            </div>
             <div className="project-links">
               {github && (
                 <a href={github} aria-label="GitHub Link" target="_blank" rel="noreferrer">
@@ -248,7 +246,7 @@ const Projects = () => {
           </div>
 
           <h3 className="project-title">
-            <a href={external} target="_blank" rel="noreferrer">
+            <a href={external || github} target="_blank" rel="noreferrer">
               {title}
             </a>
           </h3>
@@ -272,7 +270,7 @@ const Projects = () => {
   return (
     <StyledProjectsSection id="projects">
       <h2 ref={revealTitle} className="numbered-heading">
-        Noteworthy Projects
+        Selected Projects
       </h2>
 
       {/* <Link className="inline-link archive-link" to="/archive" ref={revealArchiveLink}>
@@ -309,7 +307,7 @@ const Projects = () => {
           </TransitionGroup>
         )}
       </ul>
-      {/* 
+      {/*
       <button className="more-button" onClick={() => setShowMore(!showMore)}>
         Show {showMore ? 'Less' : 'More'}
       </button> */}

@@ -6,7 +6,7 @@ import { usePrefersReducedMotion } from '@hooks';
 
 const StyledContactSection = styled.section`
   max-width: 600px;
-  margin: 0 auto 100px;
+  margin: 0 auto 70px;
   text-align: center;
 
   @media (max-width: 768px) {
@@ -32,12 +32,12 @@ const StyledContactSection = styled.section`
   }
 
   .title {
-    font-size: clamp(40px, 5vw, 60px);
+    font-size: clamp(34px, 5vw, 48px);
   }
 
   .email-link {
     ${({ theme }) => theme.mixins.bigButton};
-    margin-top: 50px;
+    margin-top: 35px;
   }
 `;
 
@@ -60,12 +60,11 @@ const Contact = () => {
       <h2 className="title">Get In Touch</h2>
 
       <p>
-        My inbox is always open! Whether you have job opportunities to discuss or just want to say
-        hello, don't hesitate to reach out.
+        Have an interesting project, opportunity, or trail recommendation? My inbox is open.
       </p>
 
       <a className="email-link" href={`mailto:${email}`}>
-        Contact me
+        Say hello
       </a>
     </StyledContactSection>
   );

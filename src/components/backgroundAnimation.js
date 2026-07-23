@@ -32,7 +32,7 @@ const BackgroundAnimation = () => (
         transform="translate(-295.027 -193.118)"
         rx="1.07306"
         ry="1.07433"
-        fill="#945DD6">
+        fill="#c59aae">
         <animateMotion dur="10s" repeatCount="indefinite" rotate="auto">
           <mpath xlinkHref="#path_2" />
         </animateMotion>
@@ -51,7 +51,7 @@ const BackgroundAnimation = () => (
         transform="translate(-295.027 -193.118)"
         rx="1.07306"
         ry="1.07433"
-        fill="#46737">
+        fill="#78b7ad">
         <animateMotion dur="5s" begin="1" repeatCount="indefinite" rotate="auto">
           <mpath xlinkHref="#path_2" />
         </animateMotion>
@@ -70,7 +70,7 @@ const BackgroundAnimation = () => (
         rx="1.07433"
         ry="1.07306"
         transform="translate(-476.525 -363.313) rotate(90 476.525 363.313)"
-        fill="#945DD6">
+        fill="#c59aae">
         <animateMotion dur="10s" repeatCount="indefinite" rotate="auto">
           <mpath xlinkHref="#path_0" />
         </animateMotion>
@@ -89,7 +89,7 @@ const BackgroundAnimation = () => (
         rx="1.07433"
         ry="1.07306"
         transform="translate(-382.164 -155.029) rotate(90 382.164 155.029)"
-        fill="#F46737">
+        fill="#e7a977">
         <animateMotion dur="10s" begin="1" repeatCount="indefinite" rotate="auto">
           <mpath xlinkHref="#path_0" />
         </animateMotion>
@@ -108,7 +108,7 @@ const BackgroundAnimation = () => (
         rx="1.07306"
         ry="1.07433"
         transform="translate(-333.324 -382.691) rotate(-180 333.324 382.691)"
-        fill="#F46737">
+        fill="#e7a977">
         <animateMotion dur="5s" begin="0" repeatCount="indefinite" rotate="auto">
           <mpath xlinkHref="#path_1" />
         </animateMotion>
@@ -127,7 +127,7 @@ const BackgroundAnimation = () => (
         rx="1.07306"
         ry="1.07433"
         transform="translate(-165.524 -93.9596)"
-        fill="#F46737">
+        fill="#e7a977">
         <animateMotion dur="10s" begin="3" repeatCount="indefinite" rotate="auto">
           <mpath xlinkHref="#path_0" />
         </animateMotion>
@@ -146,7 +146,7 @@ const BackgroundAnimation = () => (
         rx="1.07433"
         ry="1.07306"
         transform="translate(-476.525 -363.313) rotate(90 476.525 363.313)"
-        fill="#13ADC7">
+        fill="#78b7ad">
         <animateMotion dur="12s" begin="4" repeatCount="indefinite" rotate="auto">
           <mpath xlinkHref="#path_0" />
         </animateMotion>
@@ -167,7 +167,7 @@ const BackgroundAnimation = () => (
           r="1"
           gradientUnits="userSpaceOnUse"
           gradientTransform="translate(301 301) rotate(90) scale(300)">
-          <stop offset="0.333333" stopColor="#FBFBFB" />
+          <stop offset="0.333333" stopColor="#e4ebe8" />
           <stop offset="1" stopColor="white" stopOpacity="0" />
         </radialGradient>
         <radialGradient
@@ -177,7 +177,7 @@ const BackgroundAnimation = () => (
           r="1"
           gradientUnits="userSpaceOnUse"
           gradientTransform="translate(301 301) rotate(90) scale(300)">
-          <stop offset="0.333333" stopColor="#FBFBFB" />
+          <stop offset="0.333333" stopColor="#e4ebe8" />
           <stop offset="1" stopColor="white" stopOpacity="0" />
         </radialGradient>
         <radialGradient
@@ -187,7 +187,7 @@ const BackgroundAnimation = () => (
           r="1"
           gradientUnits="userSpaceOnUse"
           gradientTransform="translate(301 301) rotate(90) scale(300)">
-          <stop offset="0.333333" stopColor="#FBFBFB" />
+          <stop offset="0.333333" stopColor="#e4ebe8" />
           <stop offset="1" stopColor="white" stopOpacity="0" />
         </radialGradient>
         <linearGradient
@@ -197,8 +197,8 @@ const BackgroundAnimation = () => (
           x2="269.975"
           y2="218.154"
           gradientUnits="userSpaceOnUse">
-          <stop stopColor="#945DD6" />
-          <stop offset="1" stopColor="#945DD6" stopOpacity="0" />
+          <stop stopColor="#c59aae" />
+          <stop offset="1" stopColor="#c59aae" stopOpacity="0" />
         </linearGradient>
         <linearGradient
           id="paint4_linear"
@@ -207,8 +207,8 @@ const BackgroundAnimation = () => (
           x2="451.461"
           y2="338.272"
           gradientUnits="userSpaceOnUse">
-          <stop stopColor="#945DD6" />
-          <stop offset="1" stopColor="#945DD6" stopOpacity="0" />
+          <stop stopColor="#c59aae" />
+          <stop offset="1" stopColor="#c59aae" stopOpacity="0" />
         </linearGradient>
         <linearGradient
           id="paint5_linear"
@@ -217,8 +217,8 @@ const BackgroundAnimation = () => (
           x2="357.1"
           y2="129.989"
           gradientUnits="userSpaceOnUse">
-          <stop stopColor="#F46737" />
-          <stop offset="1" stopColor="#F46737" stopOpacity="0" />
+          <stop stopColor="#e7a977" />
+          <stop offset="1" stopColor="#e7a977" stopOpacity="0" />
         </linearGradient>
         <linearGradient
           id="paint6_linear"
@@ -227,8 +227,8 @@ const BackgroundAnimation = () => (
           x2="358.376"
           y2="357.655"
           gradientUnits="userSpaceOnUse">
-          <stop stopColor="#F46737" />
-          <stop offset="1" stopColor="#F46737" stopOpacity="0" />
+          <stop stopColor="#e7a977" />
+          <stop offset="1" stopColor="#e7a977" stopOpacity="0" />
         </linearGradient>
         <linearGradient
           id="paint7_linear"
@@ -237,8 +237,8 @@ const BackgroundAnimation = () => (
           x2="140.472"
           y2="118.996"
           gradientUnits="userSpaceOnUse">
-          <stop stopColor="#F46737" />
-          <stop offset="1" stopColor="#F46737" stopOpacity="0" />
+          <stop stopColor="#e7a977" />
+          <stop offset="1" stopColor="#e7a977" stopOpacity="0" />
         </linearGradient>
         <linearGradient
           id="paint8_linear"
@@ -247,8 +247,8 @@ const BackgroundAnimation = () => (
           x2="439.435"
           y2="276.118"
           gradientUnits="userSpaceOnUse">
-          <stop stopColor="#13ADC7" />
-          <stop offset="1" stopColor="#13ADC7" stopOpacity="0" />
+          <stop stopColor="#78b7ad" />
+          <stop offset="1" stopColor="#78b7ad" stopOpacity="0" />
         </linearGradient>
         <linearGradient
           id="paint9_linear"
@@ -267,8 +267,8 @@ const BackgroundAnimation = () => (
           x2="117.36"
           y2="258.193"
           gradientUnits="userSpaceOnUse">
-          <stop stopColor="#945DD6" />
-          <stop offset="1" stopColor="#945DD6" stopOpacity="0" />
+          <stop stopColor="#c59aae" />
+          <stop offset="1" stopColor="#c59aae" stopOpacity="0" />
         </linearGradient>
         <linearGradient
           id="paint11_linear"
@@ -277,8 +277,8 @@ const BackgroundAnimation = () => (
           x2="451.461"
           y2="338.272"
           gradientUnits="userSpaceOnUse">
-          <stop stopColor="#13ADC7" />
-          <stop offset="1" stopColor="#13ADC7" stopOpacity="0" />
+          <stop stopColor="#78b7ad" />
+          <stop offset="1" stopColor="#78b7ad" stopOpacity="0" />
         </linearGradient>
       </defs>
     </svg>

@@ -14,11 +14,7 @@ module.exports = {
 
   navLinks: [
     {
-      name: 'About',
-      url: '/',
-    },
-    {
-      name: 'Experience',
+      name: 'Work',
       url: '/#jobs',
     },
     {
@@ -32,9 +28,9 @@ module.exports = {
   ],
 
   colors: {
-    green: '#64ffda',
-    navy: '#0a192f',
-    darkNavy: '#020c1b',
+    green: '#e7a977',
+    navy: '#111716',
+    darkNavy: '#0b0f0e',
   },
 
   srConfig: (delay = 200, viewFactor = 0.25) => ({

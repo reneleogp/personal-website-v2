@@ -3,14 +3,17 @@ import { CSSTransition, TransitionGroup } from 'react-transition-group';
 import styled from 'styled-components';
 import { navDelay, loaderDelay } from '@utils';
 import { usePrefersReducedMotion } from '@hooks';
+import BackgroundAnimation from '../backgroundAnimation';
 
 const StyledHeroSection = styled.section`
   ${({ theme }) => theme.mixins.flexCenter};
   flex-direction: column;
   align-items: flex-start;
-  min-height: 100vh;
-  height: 100vh;
+  min-height: 88vh;
+  height: auto;
   padding: 0;
+  position: relative;
+  isolation: isolate;
 
   @media (max-height: 700px) and (min-width: 700px), (max-width: 360px) {
     height: auto;
@@ -43,40 +46,40 @@ const StyledHeroSection = styled.section`
 
   p {
     margin: 20px 0 0;
-    max-width: 540px;
+    max-width: 590px;
+    color: var(--light-slate);
   }
 
   .email-link {
     ${({ theme }) => theme.mixins.bigButton};
-    margin-top: 50px;
+    margin-top: 40px;
   }
-`;
 
-const StyledText = styled.div`
-  ul.skills-list {
-    display: grid;
-    grid-template-columns: repeat(2, minmax(140px, 200px));
-    grid-gap: 0 10px;
-    padding: 0;
-    margin: 20px 0 0 0;
-    overflow: hidden;
-    list-style: none;
+  .hero-content {
+    position: relative;
+    z-index: 2;
+    width: 100%;
+  }
 
-    li {
-      position: relative;
-      margin-bottom: 10px;
-      padding-left: 20px;
-      font-family: var(--font-mono);
-      font-size: var(--fz-xs);
+  .hero-animation {
+    position: absolute;
+    z-index: 1;
+    top: 50%;
+    right: -8%;
+    width: min(48vw, 620px);
+    opacity: 0.32;
+    transform: translateY(-50%);
+    pointer-events: none;
+    user-select: none;
 
-      &:before {
-        content: '▹';
-        position: absolute;
-        left: 0;
-        color: var(--green);
-        font-size: var(--fz-sm);
-        line-height: 12px;
-      }
+    @media (prefers-reduced-motion: reduce) {
+      display: none;
+    }
+
+    @media (max-width: 768px) {
+      right: -42%;
+      width: 95vw;
+      opacity: 0.18;
     }
   }
 `;
@@ -94,45 +97,24 @@ const Hero = () => {
     return () => clearTimeout(timeout);
   }, []);
 
-  const skills = [
-    'PostgreSQL',
-    'MongoDB',
-    'TypeScript',
-    'React',
-    'OpenCV',
-    'Python',
-    'C++',
-    'Google Cloud Vision',
-  ];
-
-  const skillsComponent = (
-    <ul className="skills-list">{skills && skills.map((skill, i) => <li key={i}>{skill}</li>)}</ul>
-  );
-
-  const one = <h1 className="numbered-heading">Hi, I'm</h1>;
-  const two = <h2 className="big-heading">Rene Gonzalez</h2>;
-  const three = <h3 className="medium-heading">A Passionate Software Developer</h3>;
+  const one = <h1 className="numbered-heading">Hi, my name is</h1>;
+  const two = <h2 className="big-heading">Rene Gonzalez.</h2>;
+  const three = <h3 className="medium-heading">I build useful software.</h3>;
   const four = (
-    <StyledText>
+    <div>
       <p>
-        Currently studying Computer Science at the{' '}
-        <a href="https://cs.uwaterloo.ca/" target="_blank" rel="noreferrer">
-          University of Waterloo.
-        </a>
+        I’m a software engineer based in Toronto. I’ve worked at{' '}
+        <a href="https://www.commure.com/">Commure</a>,{' '}
+        <a href="https://www.wsib.ca/">WSIB</a>, <a href="https://www.toolbx.com/">Toolbx</a>,{' '}
+        <a href="https://www.livecoinwatch.com/">Live Coin Watch</a>, and{' '}
+        <a href="https://www.ducapp.com/">DUC APP</a>.
       </p>
-      <p>
-        I have gained valuable experience through internships at a unicorn, three startups and a
-        government agency, thriving in fast-paced environments. I am always eager to embrace new
-        opportunities for learning and personal growth.
-      </p>
-      <p>Here are a few technologies I’ve been working with recently:</p>
-
-      {skillsComponent}
-    </StyledText>
+      <p>Away from my keyboard, I’m usually planning the next backpacking trip.</p>
+    </div>
   );
   const five = (
     <a className="email-link" rel="noreferrer" href="/Rene_Gonzalez_resume.pdf">
-      Check out my resume!
+      View my resume
     </a>
   );
 
@@ -140,22 +122,27 @@ const Hero = () => {
 
   return (
     <StyledHeroSection>
-      {prefersReducedMotion ? (
-        <>
-          {items.map((item, i) => (
-            <div key={i}>{item}</div>
-          ))}
-        </>
-      ) : (
-        <TransitionGroup component={null}>
-          {isMounted &&
-            items.map((item, i) => (
-              <CSSTransition key={i} classNames="fadeup" timeout={loaderDelay}>
-                <div style={{ transitionDelay: `${i + 1}00ms` }}>{item}</div>
-              </CSSTransition>
+      <div className="hero-content">
+        {prefersReducedMotion ? (
+          <>
+            {items.map((item, i) => (
+              <div key={i}>{item}</div>
             ))}
-        </TransitionGroup>
-      )}
+          </>
+        ) : (
+          <TransitionGroup component={null}>
+            {isMounted &&
+              items.map((item, i) => (
+                <CSSTransition key={i} classNames="fadeup" timeout={loaderDelay}>
+                  <div style={{ transitionDelay: `${i + 1}00ms` }}>{item}</div>
+                </CSSTransition>
+              ))}
+          </TransitionGroup>
+        )}
+      </div>
+      <div className="hero-animation" aria-hidden="true">
+        <BackgroundAnimation />
+      </div>
     </StyledHeroSection>
   );
 };

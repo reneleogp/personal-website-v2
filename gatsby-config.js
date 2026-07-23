@@ -3,7 +3,7 @@ const config = require('./src/config');
 module.exports = {
   siteMetadata: {
     title: 'Rene Gonzalez',
-    description: 'Rene Gonzalez is a SWE that studies CS at Waterloo.',
+    description: 'Rene Gonzalez is a software engineer based in Toronto.',
     siteUrl: 'https://reneleo.com', // No trailing slash allowed!
     image: '/og.png', // Path to your image you placed in the 'static' folder
     twitterUsername: '',
