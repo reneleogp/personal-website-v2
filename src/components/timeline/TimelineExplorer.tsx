@@ -80,9 +80,13 @@ function InteractiveMap({ media, reducedMotion }: { media: MapMedia | RouteMedia
     let map: import('maplibre-gl').Map | undefined;
 
     const initialize = async () => {
-      const maplibregl = await import('maplibre-gl');
+      const [maplibregl, { default: workerUrl }] = await Promise.all([
+        import('maplibre-gl'),
+        import('maplibre-gl/dist/maplibre-gl-worker.mjs?worker&url'),
+      ]);
       if (disposed || !containerRef.current) return;
 
+      maplibregl.setWorkerUrl(workerUrl);
       const center = media.kind === 'map' ? media.coordinates : media.coordinates[0];
       map = new maplibregl.Map({
         container: containerRef.current,

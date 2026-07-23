@@ -221,7 +221,7 @@ p {
 .hero {
   position: relative;
   display: grid;
-  min-height: min(52rem, 92vh);
+  min-height: min(48rem, 84vh);
   align-items: end;
   overflow: hidden;
   border-bottom: 1px solid var(--cp-border);
@@ -369,6 +369,10 @@ p {
   width: min(100% - 3rem, 90rem);
   margin-inline: auto;
   padding: clamp(5rem, 11vw, 10rem) 0;
+}
+
+.timeline-section {
+  padding-top: clamp(3.5rem, 5vw, 4.5rem);
 }
 
 .section-intro {
@@ -564,7 +568,7 @@ p {
 
 .media-panel {
   position: relative;
-  aspect-ratio: 4 / 5;
+  aspect-ratio: 4 / 3;
   overflow: hidden;
   border: 1px solid var(--cp-border);
   border-radius: 0.625rem;
@@ -606,10 +610,12 @@ p {
 .interactive-map {
   position: absolute;
   inset: 0;
+  z-index: 1;
 }
 
 .map-fallback {
   position: relative;
+  z-index: 2;
   overflow: hidden;
   background: var(--cp-surface-soft);
 }
