@@ -13,7 +13,7 @@ export default function BackgroundCanvas() {
   useEffect(() => {
     const canvas = canvasRef.current;
     const context = canvas?.getContext('2d');
-    const container = canvas?.parentElement;
+    const container = canvas?.closest<HTMLElement>('.hero');
 
     if (!canvas || !context || !container) return;
 
