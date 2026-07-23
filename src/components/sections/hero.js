@@ -77,8 +77,8 @@ const StyledHeroSection = styled.section`
     }
 
     @media (max-width: 768px) {
-      right: -42%;
-      width: 95vw;
+      right: 0;
+      width: 85vw;
       opacity: 0.18;
     }
   }
