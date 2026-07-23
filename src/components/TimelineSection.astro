@@ -20,8 +20,8 @@ const timelineItems = entries.map(entry => ({
   media:
     entry.data.media.kind === 'image'
       ? { ...entry.data.media, src: entry.data.media.src.src }
-      : entry.data.media.kind === 'video' && entry.data.media.poster
-        ? { ...entry.data.media, poster: entry.data.media.poster.src }
+      : entry.data.media.kind === 'video'
+        ? { ...entry.data.media, poster: entry.data.media.poster?.src }
         : entry.data.media,
   notes: entry.data.notes,
   links: entry.data.links,
