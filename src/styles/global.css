@@ -760,6 +760,13 @@ p {
   display: none;
 }
 
+.timeline-mobile-media > img,
+.timeline-mobile-media > video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
 .writing-preview {
   border-top: 1px solid var(--cp-border);
 }

@@ -6,7 +6,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 const projects = (await getCollection('projects', ({ data }) => data.showInProjects)).sort((first, second) => {
   const firstDate = Number.parseInt(first.data.date, 10);
   const secondDate = Number.parseInt(second.data.date, 10);
-  return Number.isNaN(firstDate) || Number.isNaN(secondDate) ? 0 : secondDate - firstDate;
+  return Number.isNaN(firstDate) || Number.isNaN(secondDate) ? 0 : firstDate - secondDate;
 });
 ---
 

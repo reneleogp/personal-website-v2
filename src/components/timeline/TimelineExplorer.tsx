@@ -196,6 +196,24 @@ function MediaPanel({ item, reducedMotion }: { item: TimelineItem; reducedMotion
   );
 }
 
+function MobileMedia({ item }: { item: TimelineItem }) {
+  const media = item.media;
+
+  if (media.kind === 'image') {
+    return <img src={media.src} alt={media.alt} loading="lazy" />;
+  }
+
+  if (media.kind === 'video') {
+    return (
+      <video controls muted playsInline preload="metadata" poster={media.poster}>
+        <source src={media.src} />
+      </video>
+    );
+  }
+
+  return <StaticMap label={media.label} />;
+}
+
 function TimelineEntry({
   item,
   active,
@@ -256,7 +274,7 @@ function TimelineEntry({
         </p>
 
         <div className="timeline-mobile-media">
-          <StaticMap label={item.location.label} />
+          <MobileMedia item={item} />
         </div>
 
         {item.details.length > 0 && (
