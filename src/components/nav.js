@@ -7,7 +7,8 @@ import { navLinks } from '@config';
 import { loaderDelay } from '@utils';
 import { useScrollDirection, usePrefersReducedMotion } from '@hooks';
 import { Menu } from '@components';
-import { IconLogo, IconHex } from '@components/icons';
+import { IconArrowUpRight, IconLogo, IconHex } from '@components/icons';
+import ThemeToggle from './themeToggle';
 
 const StyledHeader = styled.header`
   ${({ theme }) => theme.mixins.flexBetween};
@@ -17,7 +18,7 @@ const StyledHeader = styled.header`
   padding: 0px 50px;
   width: 100%;
   height: var(--nav-scroll-height);
-  background-color: rgba(10, 25, 47, 0.85);
+  background-color: rgba(var(--navy-rgb), 0.88);
   filter: none !important;
   pointer-events: auto !important;
   user-select: auto !important;
@@ -36,7 +37,7 @@ const StyledHeader = styled.header`
     props.scrollDirection === 'up' &&
       !props.scrolledToTop &&
       css`
-        background-color: rgba(10, 25, 47, 0.85);
+        background-color: rgba(var(--navy-rgb), 0.88);
         box-shadow: 0 10px 30px -10px var(--navy-shadow);
       `};
 
@@ -118,32 +119,40 @@ const StyledLinks = styled.div`
     padding: 0;
     margin: 0;
     list-style: none;
-    counter-set: item -1;
 
     li {
       margin: 0 5px;
       position: relative;
-      counter-increment: item 1;
       font-size: var(--fz-xs);
 
       a {
+        display: inline-flex;
+        gap: 5px;
+        align-items: center;
         padding: 10px;
-
-        &:before {
-          content: '0' counter(item) '.';
-          margin-right: 5px;
-          color: var(--green);
-          font-size: var(--fz-xxs);
-          text-align: right;
-        }
       }
     }
   }
 
-  .resume-button {
-    ${({ theme }) => theme.mixins.smallButton};
-    margin-left: 15px;
-    font-size: var(--fz-xs);
+  .resume-link {
+    svg {
+      display: block;
+      flex: 0 0 12px;
+      width: 12px;
+      height: 12px;
+      fill: none;
+      color: var(--green);
+      transition: var(--transition);
+    }
+  }
+
+  .resume-link:hover svg,
+  .resume-link:focus svg {
+    transform: translate(2px, -2px);
+  }
+
+  .theme-toggle {
+    flex: 0 0 auto;
   }
 `;
 
@@ -204,11 +213,13 @@ const Nav = ({ isHome }) => {
 
   const ResumeLink = (
     <a
-      className="resume-button"
+      className="resume-link"
       href="/Rene_Gonzalez_resume.pdf"
       target="_blank"
-      rel="noopener noreferrer">
+      rel="noopener noreferrer"
+      aria-label="Resume (opens in a new tab)">
       Resume
+      <IconArrowUpRight />
     </a>
   );
 
@@ -227,8 +238,9 @@ const Nav = ({ isHome }) => {
                       <Link to={url}>{name}</Link>
                     </li>
                   ))}
+                <li>{ResumeLink}</li>
               </ol>
-              <div>{ResumeLink}</div>
+              <ThemeToggle className="theme-toggle" />
             </StyledLinks>
 
             <Menu />
@@ -255,18 +267,17 @@ const Nav = ({ isHome }) => {
                         </li>
                       </CSSTransition>
                     ))}
+                  {isMounted && (
+                    <CSSTransition key="resume" classNames={fadeDownClass} timeout={timeout}>
+                      <li style={{ transitionDelay: `${isHome ? navLinks.length * 100 : 0}ms` }}>
+                        {ResumeLink}
+                      </li>
+                    </CSSTransition>
+                  )}
                 </TransitionGroup>
               </ol>
 
-              <TransitionGroup component={null}>
-                {isMounted && (
-                  <CSSTransition classNames={fadeDownClass} timeout={timeout}>
-                    <div style={{ transitionDelay: `${isHome ? navLinks.length * 100 : 0}ms` }}>
-                      {ResumeLink}
-                    </div>
-                  </CSSTransition>
-                )}
-              </TransitionGroup>
+              <ThemeToggle className="theme-toggle" />
             </StyledLinks>
 
             <TransitionGroup component={null}>

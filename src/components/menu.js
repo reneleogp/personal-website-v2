@@ -5,6 +5,8 @@ import styled from 'styled-components';
 import { navLinks } from '@config';
 import { KEY_CODES } from '@utils';
 import { useOnClickOutside } from '@hooks';
+import { IconArrowUpRight } from '@components/icons';
+import ThemeToggle from './themeToggle';
 
 const StyledMenu = styled.div`
   display: none;
@@ -120,24 +122,14 @@ const StyledSidebar = styled.aside`
     margin: 0;
     list-style: none;
     width: 100%;
-    counter-set: item -1;
 
     li {
       position: relative;
       margin: 0 auto 20px;
-      counter-increment: item 1;
       font-size: clamp(var(--fz-sm), 4vw, var(--fz-lg));
 
       @media (max-width: 600px) {
         margin: 0 auto 10px;
-      }
-
-      &:before {
-        content: '0' counter(item) '.';
-        display: block;
-        margin-bottom: 5px;
-        color: var(--green);
-        font-size: var(--fz-sm);
       }
     }
 
@@ -146,13 +138,32 @@ const StyledSidebar = styled.aside`
       width: 100%;
       padding: 3px 20px 20px;
     }
+
+    .resume-link {
+      display: inline-flex;
+      gap: 6px;
+      align-items: center;
+      justify-content: center;
+
+      svg {
+        display: block;
+        flex: 0 0 13px;
+        width: 13px;
+        height: 13px;
+        fill: none;
+        color: var(--green);
+        transition: var(--transition);
+      }
+    }
+
+    .resume-link:hover svg,
+    .resume-link:focus svg {
+      transform: translate(2px, -2px);
+    }
   }
 
-  .resume-link {
-    ${({ theme }) => theme.mixins.bigButton};
-    padding: 18px 50px;
-    margin: 10% auto 0;
-    width: max-content;
+  .theme-toggle {
+    margin: 25px auto 0;
   }
 `;
 
@@ -169,7 +180,10 @@ const Menu = () => {
   let lastFocusableEl;
 
   const setFocusables = () => {
-    menuFocusables = [buttonRef.current, ...Array.from(navRef.current.querySelectorAll('a'))];
+    menuFocusables = [
+      buttonRef.current,
+      ...Array.from(navRef.current.querySelectorAll('a, button')),
+    ];
     firstFocusableEl = menuFocusables[0];
     lastFocusableEl = menuFocusables[menuFocusables.length - 1];
   };
@@ -264,12 +278,21 @@ const Menu = () => {
                     </Link>
                   </li>
                 ))}
+                <li>
+                  <a
+                    href="/Rene_Gonzalez_resume.pdf"
+                    className="resume-link"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="Resume (opens in a new tab)">
+                    Resume
+                    <IconArrowUpRight />
+                  </a>
+                </li>
               </ol>
             )}
 
-            <a href="/Rene_Gonzalez_resume.pdf" className="resume-link">
-              Resume
-            </a>
+            <ThemeToggle className="theme-toggle" />
           </nav>
         </StyledSidebar>
       </div>

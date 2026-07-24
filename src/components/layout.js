@@ -3,11 +3,42 @@ import PropTypes from 'prop-types';
 import styled, { ThemeProvider } from 'styled-components';
 import { Head, Loader, Nav, Social, Email, Footer } from '@components';
 import { GlobalStyle, theme } from '@styles';
+import BackgroundAnimation from './backgroundAnimation';
 
 const StyledContent = styled.div`
+  position: relative;
+  isolation: isolate;
   display: flex;
   flex-direction: column;
   min-height: 100vh;
+
+  .site-animation {
+    position: fixed;
+    z-index: 0;
+    inset: 0;
+    opacity: 0.55;
+    pointer-events: none;
+    user-select: none;
+
+    .cursor-canvas {
+      display: block;
+      width: 100%;
+      height: 100%;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      display: none;
+    }
+
+    @media (max-width: 768px) {
+      opacity: 0.38;
+    }
+  }
+
+  #content {
+    position: relative;
+    z-index: 1;
+  }
 `;
 
 const Layout = ({ children, location }) => {
@@ -63,6 +94,9 @@ const Layout = ({ children, location }) => {
           ) : (
             <StyledContent>
               <Nav isHome={isHome} />
+              <div className="site-animation" aria-hidden="true">
+                <BackgroundAnimation />
+              </div>
               <Social isHome={isHome} />
               <Email isHome={isHome} />
 

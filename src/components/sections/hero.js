@@ -9,8 +9,10 @@ const StyledHeroSection = styled.section`
   flex-direction: column;
   align-items: flex-start;
   min-height: 100vh;
-  height: 100vh;
+  min-height: 100svh;
+  height: auto;
   padding: 0;
+  position: relative;
 
   @media (max-height: 700px) and (min-width: 700px), (max-width: 360px) {
     height: auto;
@@ -35,48 +37,84 @@ const StyledHeroSection = styled.section`
     }
   }
 
-  h3 {
-    margin-top: 5px;
-    color: var(--slate);
-    line-height: 0.9;
-  }
-
   p {
     margin: 20px 0 0;
-    max-width: 540px;
+    max-width: 590px;
+    color: var(--light-slate);
+  }
+
+  .experience-list {
+    display: grid;
+    gap: 7px;
+    max-width: 590px;
+    padding: 0;
+    margin: 18px 0 0;
+    list-style: none;
+
+    li {
+      display: flex;
+      gap: 11px;
+      align-items: baseline;
+      color: var(--light-slate);
+      line-height: 25px;
+    }
+
+    .experience-marker {
+      flex: 0 0 7px;
+      color: var(--green);
+      font-family: var(--font-mono);
+      font-size: var(--fz-sm);
+      font-weight: 400;
+      line-height: inherit;
+      text-align: center;
+    }
   }
 
   .email-link {
     ${({ theme }) => theme.mixins.bigButton};
-    margin-top: 50px;
+    margin-top: 40px;
   }
-`;
 
-const StyledText = styled.div`
-  ul.skills-list {
+  .hero-content {
+    position: relative;
+    width: 100%;
+  }
+
+  .scroll-cue {
+    position: absolute;
+    bottom: 30px;
+    left: 50%;
     display: grid;
-    grid-template-columns: repeat(2, minmax(140px, 200px));
-    grid-gap: 0 10px;
-    padding: 0;
-    margin: 20px 0 0 0;
-    overflow: hidden;
-    list-style: none;
+    width: 32px;
+    height: 32px;
+    place-items: center;
+    color: var(--green);
+    opacity: 0.7;
+    transform: translateX(-50%);
 
-    li {
-      position: relative;
-      margin-bottom: 10px;
-      padding-left: 20px;
+    span {
       font-family: var(--font-mono);
-      font-size: var(--fz-xs);
+      font-size: 18px;
+      line-height: 1;
+      transition: var(--transition);
+    }
 
-      &:before {
-        content: '▹';
-        position: absolute;
-        left: 0;
-        color: var(--green);
-        font-size: var(--fz-sm);
-        line-height: 12px;
+    &:hover,
+    &:focus-visible {
+      opacity: 1;
+
+      span {
+        transform: translateY(3px);
       }
+    }
+
+    @media (max-height: 620px) {
+      position: relative;
+      bottom: auto;
+      left: auto;
+      align-self: center;
+      margin-top: 36px;
+      transform: none;
     }
   }
 `;
@@ -94,68 +132,74 @@ const Hero = () => {
     return () => clearTimeout(timeout);
   }, []);
 
-  const skills = [
-    'PostgreSQL',
-    'MongoDB',
-    'TypeScript',
-    'React',
-    'OpenCV',
-    'Python',
-    'C++',
-    'Google Cloud Vision',
-  ];
-
-  const skillsComponent = (
-    <ul className="skills-list">{skills && skills.map((skill, i) => <li key={i}>{skill}</li>)}</ul>
+  const one = <h1 className="numbered-heading">Hi, my name is</h1>;
+  const two = <h2 className="big-heading">Rene Gonzalez.</h2>;
+  const three = (
+    <div>
+      <p>
+        I’m an Honours Computer Science co-op student at the{' '}
+        <a href="https://uwaterloo.ca/">University of Waterloo</a>, graduating in May 2028.
+        These are some companies I have worked for in the past:
+      </p>
+      <ul className="experience-list">
+        <li>
+          <span className="experience-marker" aria-hidden="true">
+            &mdash;
+          </span>
+          <span>
+            <a href="https://azure.microsoft.com/">2x Intern @ Microsoft Azure</a>
+          </span>
+        </li>
+        <li>
+          <span className="experience-marker" aria-hidden="true">
+            &mdash;
+          </span>
+          <span>
+            <a href="https://www.commure.com/">Commure</a> (HealthTech Unicorn)
+          </span>
+        </li>
+        <li>
+          <span className="experience-marker" aria-hidden="true">
+            &mdash;
+          </span>
+          <span>
+            <a href="https://www.athelas.com/">Athelas</a> (YC S16)
+          </span>
+        </li>
+      </ul>
+    </div>
   );
-
-  const one = <h1 className="numbered-heading">Hi, I'm</h1>;
-  const two = <h2 className="big-heading">Rene Gonzalez</h2>;
-  const three = <h3 className="medium-heading">A Passionate Software Developer</h3>;
   const four = (
-    <StyledText>
-      <p>
-        Currently studying Computer Science at the{' '}
-        <a href="https://cs.uwaterloo.ca/" target="_blank" rel="noreferrer">
-          University of Waterloo.
-        </a>
-      </p>
-      <p>
-        I have gained valuable experience through internships at a unicorn, three startups and a
-        government agency, thriving in fast-paced environments. I am always eager to embrace new
-        opportunities for learning and personal growth.
-      </p>
-      <p>Here are a few technologies I’ve been working with recently:</p>
-
-      {skillsComponent}
-    </StyledText>
-  );
-  const five = (
     <a className="email-link" rel="noreferrer" href="/Rene_Gonzalez_resume.pdf">
-      Check out my resume!
+      View my resume
     </a>
   );
 
-  const items = [one, two, three, four, five];
+  const items = [one, two, three, four];
 
   return (
     <StyledHeroSection>
-      {prefersReducedMotion ? (
-        <>
-          {items.map((item, i) => (
-            <div key={i}>{item}</div>
-          ))}
-        </>
-      ) : (
-        <TransitionGroup component={null}>
-          {isMounted &&
-            items.map((item, i) => (
-              <CSSTransition key={i} classNames="fadeup" timeout={loaderDelay}>
-                <div style={{ transitionDelay: `${i + 1}00ms` }}>{item}</div>
-              </CSSTransition>
+      <div className="hero-content">
+        {prefersReducedMotion ? (
+          <>
+            {items.map((item, i) => (
+              <div key={i}>{item}</div>
             ))}
-        </TransitionGroup>
-      )}
+          </>
+        ) : (
+          <TransitionGroup component={null}>
+            {isMounted &&
+              items.map((item, i) => (
+                <CSSTransition key={i} classNames="fadeup" timeout={loaderDelay}>
+                  <div style={{ transitionDelay: `${i + 1}00ms` }}>{item}</div>
+                </CSSTransition>
+              ))}
+          </TransitionGroup>
+        )}
+      </div>
+      <a className="scroll-cue" href="#timeline" aria-label="View work timeline">
+        <span aria-hidden="true">↓</span>
+      </a>
     </StyledHeroSection>
   );
 };
