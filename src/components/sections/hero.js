@@ -144,7 +144,7 @@ const Hero = () => {
       <ul className="experience-list">
         <li>
           <span className="experience-marker" aria-hidden="true">
-            &mdash;
+            -
           </span>
           <span>
             <a href="https://azure.microsoft.com/">2x Intern @ Microsoft Azure</a>
@@ -152,7 +152,7 @@ const Hero = () => {
         </li>
         <li>
           <span className="experience-marker" aria-hidden="true">
-            &mdash;
+            -
           </span>
           <span>
             <a href="https://www.commure.com/">Commure</a> (HealthTech Unicorn)
@@ -160,7 +160,7 @@ const Hero = () => {
         </li>
         <li>
           <span className="experience-marker" aria-hidden="true">
-            &mdash;
+            -
           </span>
           <span>
             <a href="https://www.athelas.com/">Athelas</a> (YC S16)

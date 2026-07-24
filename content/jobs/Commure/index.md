@@ -3,7 +3,7 @@ date: '2025-05-01'
 title: 'Software Engineer Intern'
 company: 'Commure'
 location: 'Mountain View, California'
-range: 'May - Aug. 2025'
+range: 'May - Aug 2025'
 url: 'https://www.commure.com/'
 ---
 
