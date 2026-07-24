@@ -7,6 +7,7 @@ import { usePrefersReducedMotion } from '@hooks';
 
 const StyledJobsSection = styled.section`
   max-width: 760px;
+  scroll-margin-top: var(--nav-scroll-height);
 `;
 
 const StyledTimeline = styled.ol`
