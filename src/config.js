@@ -15,7 +15,7 @@ module.exports = {
   navLinks: [
     {
       name: 'Timeline',
-      url: '/#jobs',
+      url: '/#timeline',
     },
     {
       name: 'Contact',

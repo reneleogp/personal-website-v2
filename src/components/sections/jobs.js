@@ -134,7 +134,7 @@ const Jobs = () => {
   }, []);
 
   return (
-    <StyledJobsSection id="jobs" ref={revealContainer}>
+    <StyledJobsSection id="timeline" ref={revealContainer}>
       <h2 className="numbered-heading">Timeline</h2>
 
       <StyledTimeline aria-label="Work timeline">

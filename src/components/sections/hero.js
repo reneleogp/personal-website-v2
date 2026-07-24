@@ -8,7 +8,8 @@ const StyledHeroSection = styled.section`
   ${({ theme }) => theme.mixins.flexCenter};
   flex-direction: column;
   align-items: flex-start;
-  min-height: 88vh;
+  min-height: 100vh;
+  min-height: 100svh;
   height: auto;
   padding: 0;
   position: relative;
@@ -81,7 +82,7 @@ const StyledHeroSection = styled.section`
 
   .scroll-cue {
     position: absolute;
-    bottom: 18px;
+    bottom: 30px;
     left: 50%;
     display: grid;
     width: 32px;
@@ -196,7 +197,7 @@ const Hero = () => {
           </TransitionGroup>
         )}
       </div>
-      <a className="scroll-cue" href="#jobs" aria-label="View work timeline">
+      <a className="scroll-cue" href="#timeline" aria-label="View work timeline">
         <span aria-hidden="true">↓</span>
       </a>
     </StyledHeroSection>
