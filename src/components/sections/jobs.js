@@ -8,6 +8,10 @@ import { usePrefersReducedMotion } from '@hooks';
 const StyledJobsSection = styled.section`
   max-width: 760px;
   scroll-margin-top: var(--nav-scroll-height);
+
+  .numbered-heading:after {
+    top: 0;
+  }
 `;
 
 const StyledTimeline = styled.ol`
