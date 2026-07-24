@@ -17,13 +17,12 @@ const IconLogo = () => (
     </g>
     <text
       x="42"
-      y="58.17"
+      y="62.457"
       fill="currentColor"
-      fontSize="35px"
+      fontSize="50px"
       fontFamily="Lucida Console, Courier New, monospace"
-      fontWeight="700"
       textAnchor="middle">
-      RG
+      R
     </text>
   </svg>
 );

@@ -20,13 +20,12 @@ const IconLoader = () => (
     </g>
     <text
       x="50"
-      y="61"
+      y="65.912"
       fill="currentColor"
-      fontSize="38px"
+      fontSize="55px"
       fontFamily="Lucida Console, Courier New, monospace"
-      fontWeight="700"
       textAnchor="middle">
-      RG
+      R
     </text>
   </svg>
 );
