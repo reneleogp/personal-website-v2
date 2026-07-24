@@ -11,7 +11,7 @@ const StyledJobsSection = styled.section`
 
 const StyledTimeline = styled.ol`
   position: relative;
-  padding: 0;
+  padding: 0 0 22px;
   margin: 0;
   list-style: none;
 
@@ -23,6 +23,18 @@ const StyledTimeline = styled.ol`
     left: 6px;
     width: 1px;
     background-color: var(--lightest-navy);
+  }
+
+  &:after {
+    content: '';
+    position: absolute;
+    bottom: 5px;
+    left: 3px;
+    width: 7px;
+    height: 7px;
+    border-right: 1px solid var(--green);
+    border-bottom: 1px solid var(--green);
+    transform: rotate(45deg);
   }
 `;
 
@@ -42,7 +54,7 @@ const StyledTimelineItem = styled.li`
   &:before {
     content: '';
     position: absolute;
-    top: 7px;
+    top: 3px;
     left: 0;
     width: 13px;
     height: 13px;

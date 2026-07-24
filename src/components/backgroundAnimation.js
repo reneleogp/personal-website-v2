@@ -6,13 +6,17 @@ const BackgroundAnimation = () => {
   useEffect(() => {
     const canvas = canvasRef.current;
     const context = canvas?.getContext('2d');
-    const container = canvas?.closest('section');
 
-    if (!canvas || !context || !container) {
+    if (!canvas || !context) {
       return undefined;
     }
 
     const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    if (prefersReducedMotion) {
+      return undefined;
+    }
+
     const pointer = { x: 0, y: 0, active: false };
     const follower = { x: 0, y: 0 };
     let particles = [];
@@ -34,10 +38,9 @@ const BackgroundAnimation = () => {
     };
 
     const resize = () => {
-      const bounds = container.getBoundingClientRect();
       const ratio = Math.min(window.devicePixelRatio || 1, 2);
-      width = bounds.width;
-      height = bounds.height;
+      width = window.innerWidth;
+      height = window.innerHeight;
       canvas.width = Math.round(width * ratio);
       canvas.height = Math.round(height * ratio);
       canvas.style.width = `${width}px`;
@@ -58,10 +61,8 @@ const BackgroundAnimation = () => {
       follower.y += (pointer.y - follower.y) * 0.08;
 
       particles.forEach(particle => {
-        if (!prefersReducedMotion) {
-          particle.x = (particle.x + particle.dx + width) % width;
-          particle.y = (particle.y + particle.dy + height) % height;
-        }
+        particle.x = (particle.x + particle.dx + width) % width;
+        particle.y = (particle.y + particle.dy + height) % height;
 
         const distance = Math.hypot(particle.x - follower.x, particle.y - follower.y);
         const isNearPointer = distance < 170;
@@ -88,15 +89,12 @@ const BackgroundAnimation = () => {
         context.fill();
       }
 
-      if (!prefersReducedMotion) {
-        frameId = requestAnimationFrame(draw);
-      }
+      frameId = requestAnimationFrame(draw);
     };
 
     const handlePointerMove = event => {
-      const bounds = canvas.getBoundingClientRect();
-      pointer.x = event.clientX - bounds.left;
-      pointer.y = event.clientY - bounds.top;
+      pointer.x = event.clientX;
+      pointer.y = event.clientY;
       pointer.active = true;
     };
 
@@ -106,24 +104,19 @@ const BackgroundAnimation = () => {
       pointer.active = false;
     };
 
-    const resizeObserver = new ResizeObserver(() => {
-      resize();
-      if (prefersReducedMotion) {
-        draw();
-      }
-    });
-
-    resizeObserver.observe(container);
-    container.addEventListener('pointermove', handlePointerMove);
-    container.addEventListener('pointerleave', handlePointerLeave);
+    window.addEventListener('resize', resize);
+    window.addEventListener('pointermove', handlePointerMove, { passive: true });
+    window.addEventListener('blur', handlePointerLeave);
+    document.documentElement.addEventListener('mouseleave', handlePointerLeave);
     resize();
     draw();
 
     return () => {
       cancelAnimationFrame(frameId);
-      resizeObserver.disconnect();
-      container.removeEventListener('pointermove', handlePointerMove);
-      container.removeEventListener('pointerleave', handlePointerLeave);
+      window.removeEventListener('resize', resize);
+      window.removeEventListener('pointermove', handlePointerMove);
+      window.removeEventListener('blur', handlePointerLeave);
+      document.documentElement.removeEventListener('mouseleave', handlePointerLeave);
     };
   }, []);
 

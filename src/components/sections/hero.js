@@ -3,7 +3,6 @@ import { CSSTransition, TransitionGroup } from 'react-transition-group';
 import styled from 'styled-components';
 import { navDelay, loaderDelay } from '@utils';
 import { usePrefersReducedMotion } from '@hooks';
-import BackgroundAnimation from '../backgroundAnimation';
 
 const StyledHeroSection = styled.section`
   ${({ theme }) => theme.mixins.flexCenter};
@@ -13,7 +12,6 @@ const StyledHeroSection = styled.section`
   height: auto;
   padding: 0;
   position: relative;
-  isolation: isolate;
 
   @media (max-height: 700px) and (min-width: 700px), (max-width: 360px) {
     height: auto;
@@ -38,16 +36,35 @@ const StyledHeroSection = styled.section`
     }
   }
 
-  h3 {
-    margin-top: 5px;
-    color: var(--slate);
-    line-height: 0.9;
-  }
-
   p {
     margin: 20px 0 0;
     max-width: 590px;
     color: var(--light-slate);
+  }
+
+  .experience-list {
+    display: grid;
+    gap: 7px;
+    max-width: 590px;
+    padding: 0;
+    margin: 18px 0 0;
+    list-style: none;
+
+    li {
+      position: relative;
+      padding-left: 18px;
+      color: var(--light-slate);
+
+      &:before {
+        content: '';
+        position: absolute;
+        top: 0.68em;
+        left: 0;
+        width: 7px;
+        height: 1px;
+        background-color: var(--green);
+      }
+    }
   }
 
   .email-link {
@@ -57,33 +74,7 @@ const StyledHeroSection = styled.section`
 
   .hero-content {
     position: relative;
-    z-index: 2;
     width: 100%;
-  }
-
-  .hero-animation {
-    position: absolute;
-    z-index: 1;
-    inset: 0;
-    width: 100%;
-    height: 100%;
-    opacity: 0.65;
-    pointer-events: none;
-    user-select: none;
-
-    .cursor-canvas {
-      display: block;
-      width: 100%;
-      height: 100%;
-    }
-
-    @media (prefers-reduced-motion: reduce) {
-      display: none;
-    }
-
-    @media (max-width: 768px) {
-      opacity: 0.42;
-    }
   }
 `;
 
@@ -102,26 +93,33 @@ const Hero = () => {
 
   const one = <h1 className="numbered-heading">Hi, my name is</h1>;
   const two = <h2 className="big-heading">Rene Gonzalez.</h2>;
-  const three = <h3 className="medium-heading">I build useful software.</h3>;
-  const four = (
+  const three = (
     <div>
       <p>
-        I’m a software engineer based in Toronto. I’ve worked at{' '}
-        <a href="https://www.commure.com/">Commure</a>,{' '}
-        <a href="https://www.wsib.ca/">WSIB</a>, <a href="https://www.toolbx.com/">Toolbx</a>,{' '}
-        <a href="https://www.livecoinwatch.com/">Live Coin Watch</a>, and{' '}
-        <a href="https://www.ducapp.com/">DUC APP</a>.
+        I’m a Computer Science student at the{' '}
+        <a href="https://uwaterloo.ca/">University of Waterloo</a>. These are some companies I
+        have worked for in the past:
       </p>
-      <p>Away from my keyboard, I’m usually planning the next backpacking trip.</p>
+      <ul className="experience-list">
+        <li>
+          <a href="https://azure.microsoft.com/">2x Intern @ Microsoft Azure</a>
+        </li>
+        <li>
+          <a href="https://www.commure.com/">Commure</a> (healthtech unicorn)
+        </li>
+        <li>
+          <a href="https://www.athelas.com/">Athelas</a> (YC S16)
+        </li>
+      </ul>
     </div>
   );
-  const five = (
+  const four = (
     <a className="email-link" rel="noreferrer" href="/Rene_Gonzalez_resume.pdf">
       View my resume
     </a>
   );
 
-  const items = [one, two, three, four, five];
+  const items = [one, two, three, four];
 
   return (
     <StyledHeroSection>
@@ -142,9 +140,6 @@ const Hero = () => {
               ))}
           </TransitionGroup>
         )}
-      </div>
-      <div className="hero-animation" aria-hidden="true">
-        <BackgroundAnimation />
       </div>
     </StyledHeroSection>
   );

@@ -126,15 +126,39 @@ const StyledLinks = styled.div`
       font-size: var(--fz-xs);
 
       a {
+        display: inline-flex;
+        gap: 5px;
+        align-items: center;
         padding: 10px;
       }
     }
   }
 
-  .resume-button {
-    ${({ theme }) => theme.mixins.smallButton};
-    margin-left: 15px;
+  .resume-link {
+    display: inline-flex;
+    gap: 5px;
+    align-items: center;
+    margin-left: 5px;
+    padding: 10px;
     font-size: var(--fz-xs);
+  }
+
+  .link-arrow {
+    display: inline-block;
+    color: var(--green);
+    font-size: 12px;
+    line-height: 1;
+    transition: var(--transition);
+  }
+
+  ol a:hover .link-arrow,
+  ol a:focus .link-arrow {
+    transform: translateY(2px);
+  }
+
+  .resume-link:hover .link-arrow,
+  .resume-link:focus .link-arrow {
+    transform: translate(2px, -2px);
   }
 
   .theme-toggle {
@@ -199,11 +223,15 @@ const Nav = ({ isHome }) => {
 
   const ResumeLink = (
     <a
-      className="resume-button"
+      className="resume-link"
       href="/Rene_Gonzalez_resume.pdf"
       target="_blank"
-      rel="noopener noreferrer">
+      rel="noopener noreferrer"
+      aria-label="Resume (opens in a new tab)">
       Resume
+      <span className="link-arrow" aria-hidden="true">
+        ↗
+      </span>
     </a>
   );
 
@@ -219,7 +247,14 @@ const Nav = ({ isHome }) => {
                 {navLinks &&
                   navLinks.map(({ url, name }, i) => (
                     <li key={i}>
-                      <Link to={url}>{name}</Link>
+                      <Link to={url}>
+                        {name}
+                        {name === 'Timeline' && (
+                          <span className="link-arrow" aria-hidden="true">
+                            ↓
+                          </span>
+                        )}
+                      </Link>
                     </li>
                   ))}
               </ol>
@@ -247,7 +282,14 @@ const Nav = ({ isHome }) => {
                     navLinks.map(({ url, name }, i) => (
                       <CSSTransition key={i} classNames={fadeDownClass} timeout={timeout}>
                         <li key={i} style={{ transitionDelay: `${isHome ? i * 100 : 0}ms` }}>
-                          <Link to={url}>{name}</Link>
+                          <Link to={url}>
+                            {name}
+                            {name === 'Timeline' && (
+                              <span className="link-arrow" aria-hidden="true">
+                                ↓
+                              </span>
+                            )}
+                          </Link>
                         </li>
                       </CSSTransition>
                     ))}

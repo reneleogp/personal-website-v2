@@ -137,13 +137,31 @@ const StyledSidebar = styled.aside`
       width: 100%;
       padding: 3px 20px 20px;
     }
-  }
 
-  .resume-link {
-    ${({ theme }) => theme.mixins.bigButton};
-    padding: 18px 50px;
-    margin: 10% auto 0;
-    width: max-content;
+    .resume-link {
+      display: inline-flex;
+      gap: 6px;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .link-arrow {
+      display: inline-block;
+      color: var(--green);
+      font-size: 0.8em;
+      line-height: 1;
+      transition: var(--transition);
+    }
+
+    a:hover .link-arrow-down,
+    a:focus .link-arrow-down {
+      transform: translateY(2px);
+    }
+
+    .resume-link:hover .link-arrow,
+    .resume-link:focus .link-arrow {
+      transform: translate(2px, -2px);
+    }
   }
 
   .theme-toggle {
@@ -259,15 +277,29 @@ const Menu = () => {
                   <li key={i}>
                     <Link to={url} onClick={() => setMenuOpen(false)}>
                       {name}
+                      {name === 'Timeline' && (
+                        <span className="link-arrow link-arrow-down" aria-hidden="true">
+                          ↓
+                        </span>
+                      )}
                     </Link>
                   </li>
                 ))}
+                <li>
+                  <a
+                    href="/Rene_Gonzalez_resume.pdf"
+                    className="resume-link"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="Resume (opens in a new tab)">
+                    Resume
+                    <span className="link-arrow" aria-hidden="true">
+                      ↗
+                    </span>
+                  </a>
+                </li>
               </ol>
             )}
-
-            <a href="/Rene_Gonzalez_resume.pdf" className="resume-link">
-              Resume
-            </a>
 
             <ThemeToggle className="theme-toggle" />
           </nav>
