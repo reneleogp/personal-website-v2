@@ -18,15 +18,12 @@ const IconLoader = () => (
                   L 89, 28 z"
       />
     </g>
-    <text
-      x="50"
-      y="65.912"
+    <path
       fill="currentColor"
-      fontSize="55px"
-      fontFamily="Lucida Console, Courier New, monospace"
-      textAnchor="middle">
-      R
-    </text>
+      fillRule="evenodd"
+      transform="translate(0 -1)"
+      d="M33 24h17c11 0 16 6 16 17 0 10-5 16-12 18l13 19h-8L47 60h-7v18h-7V24zm7 8v20h9c7 0 10-4 10-10 0-7-3-10-10-10h-9z"
+    />
   </svg>
 );
 
