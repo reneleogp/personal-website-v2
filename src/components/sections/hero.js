@@ -51,19 +51,21 @@ const StyledHeroSection = styled.section`
     list-style: none;
 
     li {
-      position: relative;
-      padding-left: 18px;
+      display: flex;
+      gap: 11px;
+      align-items: baseline;
       color: var(--light-slate);
+      line-height: 25px;
+    }
 
-      &:before {
-        content: '';
-        position: absolute;
-        top: 0.68em;
-        left: 0;
-        width: 7px;
-        height: 1px;
-        background-color: var(--green);
-      }
+    .experience-marker {
+      flex: 0 0 7px;
+      color: var(--green);
+      font-family: var(--font-mono);
+      font-size: var(--fz-sm);
+      font-weight: 400;
+      line-height: inherit;
+      text-align: center;
     }
   }
 
@@ -75,6 +77,44 @@ const StyledHeroSection = styled.section`
   .hero-content {
     position: relative;
     width: 100%;
+  }
+
+  .scroll-cue {
+    position: absolute;
+    bottom: 18px;
+    left: 50%;
+    display: grid;
+    width: 32px;
+    height: 32px;
+    place-items: center;
+    color: var(--green);
+    opacity: 0.7;
+    transform: translateX(-50%);
+
+    span {
+      font-family: var(--font-mono);
+      font-size: 18px;
+      line-height: 1;
+      transition: var(--transition);
+    }
+
+    &:hover,
+    &:focus-visible {
+      opacity: 1;
+
+      span {
+        transform: translateY(3px);
+      }
+    }
+
+    @media (max-height: 620px) {
+      position: relative;
+      bottom: auto;
+      left: auto;
+      align-self: center;
+      margin-top: 36px;
+      transform: none;
+    }
   }
 `;
 
@@ -102,13 +142,28 @@ const Hero = () => {
       </p>
       <ul className="experience-list">
         <li>
-          <a href="https://azure.microsoft.com/">2x Intern @ Microsoft Azure</a>
+          <span className="experience-marker" aria-hidden="true">
+            &mdash;
+          </span>
+          <span>
+            <a href="https://azure.microsoft.com/">2x Intern @ Microsoft Azure</a>
+          </span>
         </li>
         <li>
-          <a href="https://www.commure.com/">Commure</a> (healthtech unicorn)
+          <span className="experience-marker" aria-hidden="true">
+            &mdash;
+          </span>
+          <span>
+            <a href="https://www.commure.com/">Commure</a> (healthtech unicorn)
+          </span>
         </li>
         <li>
-          <a href="https://www.athelas.com/">Athelas</a> (YC S16)
+          <span className="experience-marker" aria-hidden="true">
+            &mdash;
+          </span>
+          <span>
+            <a href="https://www.athelas.com/">Athelas</a> (YC S16)
+          </span>
         </li>
       </ul>
     </div>
@@ -141,6 +196,9 @@ const Hero = () => {
           </TransitionGroup>
         )}
       </div>
+      <a className="scroll-cue" href="#jobs" aria-label="View work timeline">
+        <span aria-hidden="true">↓</span>
+      </a>
     </StyledHeroSection>
   );
 };

@@ -7,7 +7,7 @@ import { navLinks } from '@config';
 import { loaderDelay } from '@utils';
 import { useScrollDirection, usePrefersReducedMotion } from '@hooks';
 import { Menu } from '@components';
-import { IconLogo, IconHex } from '@components/icons';
+import { IconArrowUpRight, IconLogo, IconHex } from '@components/icons';
 import ThemeToggle from './themeToggle';
 
 const StyledHeader = styled.header`
@@ -135,29 +135,19 @@ const StyledLinks = styled.div`
   }
 
   .resume-link {
-    display: inline-flex;
-    gap: 5px;
-    align-items: center;
-    margin-left: 5px;
-    padding: 10px;
-    font-size: var(--fz-xs);
+    svg {
+      display: block;
+      flex: 0 0 12px;
+      width: 12px;
+      height: 12px;
+      fill: none;
+      color: var(--green);
+      transition: var(--transition);
+    }
   }
 
-  .link-arrow {
-    display: inline-block;
-    color: var(--green);
-    font-size: 12px;
-    line-height: 1;
-    transition: var(--transition);
-  }
-
-  ol a:hover .link-arrow,
-  ol a:focus .link-arrow {
-    transform: translateY(2px);
-  }
-
-  .resume-link:hover .link-arrow,
-  .resume-link:focus .link-arrow {
+  .resume-link:hover svg,
+  .resume-link:focus svg {
     transform: translate(2px, -2px);
   }
 
@@ -229,9 +219,7 @@ const Nav = ({ isHome }) => {
       rel="noopener noreferrer"
       aria-label="Resume (opens in a new tab)">
       Resume
-      <span className="link-arrow" aria-hidden="true">
-        ↗
-      </span>
+      <IconArrowUpRight />
     </a>
   );
 
@@ -247,18 +235,11 @@ const Nav = ({ isHome }) => {
                 {navLinks &&
                   navLinks.map(({ url, name }, i) => (
                     <li key={i}>
-                      <Link to={url}>
-                        {name}
-                        {name === 'Timeline' && (
-                          <span className="link-arrow" aria-hidden="true">
-                            ↓
-                          </span>
-                        )}
-                      </Link>
+                      <Link to={url}>{name}</Link>
                     </li>
                   ))}
+                <li>{ResumeLink}</li>
               </ol>
-              <div>{ResumeLink}</div>
               <ThemeToggle className="theme-toggle" />
             </StyledLinks>
 
@@ -282,29 +263,19 @@ const Nav = ({ isHome }) => {
                     navLinks.map(({ url, name }, i) => (
                       <CSSTransition key={i} classNames={fadeDownClass} timeout={timeout}>
                         <li key={i} style={{ transitionDelay: `${isHome ? i * 100 : 0}ms` }}>
-                          <Link to={url}>
-                            {name}
-                            {name === 'Timeline' && (
-                              <span className="link-arrow" aria-hidden="true">
-                                ↓
-                              </span>
-                            )}
-                          </Link>
+                          <Link to={url}>{name}</Link>
                         </li>
                       </CSSTransition>
                     ))}
+                  {isMounted && (
+                    <CSSTransition key="resume" classNames={fadeDownClass} timeout={timeout}>
+                      <li style={{ transitionDelay: `${isHome ? navLinks.length * 100 : 0}ms` }}>
+                        {ResumeLink}
+                      </li>
+                    </CSSTransition>
+                  )}
                 </TransitionGroup>
               </ol>
-
-              <TransitionGroup component={null}>
-                {isMounted && (
-                  <CSSTransition classNames={fadeDownClass} timeout={timeout}>
-                    <div style={{ transitionDelay: `${isHome ? navLinks.length * 100 : 0}ms` }}>
-                      {ResumeLink}
-                    </div>
-                  </CSSTransition>
-                )}
-              </TransitionGroup>
 
               <ThemeToggle className="theme-toggle" />
             </StyledLinks>

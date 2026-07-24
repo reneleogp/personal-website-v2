@@ -5,6 +5,7 @@ import styled from 'styled-components';
 import { navLinks } from '@config';
 import { KEY_CODES } from '@utils';
 import { useOnClickOutside } from '@hooks';
+import { IconArrowUpRight } from '@components/icons';
 import ThemeToggle from './themeToggle';
 
 const StyledMenu = styled.div`
@@ -143,23 +144,20 @@ const StyledSidebar = styled.aside`
       gap: 6px;
       align-items: center;
       justify-content: center;
+
+      svg {
+        display: block;
+        flex: 0 0 13px;
+        width: 13px;
+        height: 13px;
+        fill: none;
+        color: var(--green);
+        transition: var(--transition);
+      }
     }
 
-    .link-arrow {
-      display: inline-block;
-      color: var(--green);
-      font-size: 0.8em;
-      line-height: 1;
-      transition: var(--transition);
-    }
-
-    a:hover .link-arrow-down,
-    a:focus .link-arrow-down {
-      transform: translateY(2px);
-    }
-
-    .resume-link:hover .link-arrow,
-    .resume-link:focus .link-arrow {
+    .resume-link:hover svg,
+    .resume-link:focus svg {
       transform: translate(2px, -2px);
     }
   }
@@ -277,11 +275,6 @@ const Menu = () => {
                   <li key={i}>
                     <Link to={url} onClick={() => setMenuOpen(false)}>
                       {name}
-                      {name === 'Timeline' && (
-                        <span className="link-arrow link-arrow-down" aria-hidden="true">
-                          ↓
-                        </span>
-                      )}
                     </Link>
                   </li>
                 ))}
@@ -293,9 +286,7 @@ const Menu = () => {
                     rel="noopener noreferrer"
                     aria-label="Resume (opens in a new tab)">
                     Resume
-                    <span className="link-arrow" aria-hidden="true">
-                      ↗
-                    </span>
+                    <IconArrowUpRight />
                   </a>
                 </li>
               </ol>
