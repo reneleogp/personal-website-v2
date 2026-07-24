@@ -15,12 +15,9 @@ const IconLogo = () => (
         />
       </g>
     </g>
-    <path
-      fill="currentColor"
-      fillRule="evenodd"
-      transform="translate(42 48) scale(0.9) translate(-50 -51)"
-      d="M33 24h17c11 0 16 6 16 17 0 10-5 16-12 18l13 19h-8L47 60h-7v18h-7V24zm7 8v20h9c7 0 10-4 10-10 0-7-3-10-10-10h-9z"
-    />
+    <text x="27" y="65" fill="currentColor" fontSize="50px" fontFamily="Lucida Console">
+      R
+    </text>
   </svg>
 );
 
