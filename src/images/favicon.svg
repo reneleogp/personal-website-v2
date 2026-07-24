@@ -30,9 +30,10 @@
   <text
     class="letter"
     x="50"
-    y="68"
+    y="62"
     font-family="Lucida Console, Courier New, monospace"
-    font-size="54"
+    font-size="38"
+    font-weight="700"
     text-anchor="middle"
-  >R</text>
+  >RG</text>
 </svg>
