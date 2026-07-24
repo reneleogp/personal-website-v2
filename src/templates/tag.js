@@ -82,7 +82,7 @@ const TagTemplate = ({ pageContext, data, location }) => {
                       day: 'numeric',
                     })}
                   </time>
-                  <span>&nbsp;&mdash;&nbsp;</span>
+                  <span>&nbsp;-&nbsp;</span>
                   {tags &&
                     tags.length > 0 &&
                     tags.map((tag, i) => (

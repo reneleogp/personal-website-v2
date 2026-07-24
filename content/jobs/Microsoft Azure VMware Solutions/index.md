@@ -1,9 +1,9 @@
 ---
 date: '2025-09-01'
 title: 'Software Engineer Intern, Azure VMware Solutions'
-company: 'Microsoft — Azure VMware Solutions'
+company: 'Microsoft - Azure VMware Solutions'
 location: 'Redmond, Washington'
-range: 'Sep. - Dec. 2025'
+range: 'Sep - Dec 2025'
 url: 'https://azure.microsoft.com/products/azure-vmware/'
 ---
 

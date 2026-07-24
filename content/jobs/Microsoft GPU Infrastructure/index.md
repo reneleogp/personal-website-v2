@@ -1,9 +1,9 @@
 ---
 date: '2026-05-01'
 title: 'Software Engineer Intern, Azure GPU Infrastructure'
-company: 'Microsoft — Azure GPU Infrastructure'
+company: 'Microsoft - Azure GPU Infrastructure'
 location: 'Redmond, Washington'
-range: 'May - Aug. 2026'
+range: 'May - Aug 2026'
 url: 'https://azure.microsoft.com/'
 ---
 

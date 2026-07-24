@@ -187,7 +187,7 @@ const ArchivePage = ({ location, data }) => {
                       <td className="title">{title}</td>
 
                       <td className="company hide-on-mobile">
-                        {company ? <span>{company}</span> : <span>—</span>}
+                        {company ? <span>{company}</span> : <span>-</span>}
                       </td>
 
                       <td className="tech hide-on-mobile">

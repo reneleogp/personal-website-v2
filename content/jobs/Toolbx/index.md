@@ -3,7 +3,7 @@ date: '2023-05-01'
 title: 'Software Engineer Intern'
 company: 'Toolbx'
 location: 'Toronto, Canada'
-range: 'May - Aug. 2023'
+range: 'May - Aug 2023'
 url: 'https://www.toolbx.com/'
 ---
 
