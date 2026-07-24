@@ -137,9 +137,9 @@ const Hero = () => {
   const three = (
     <div>
       <p>
-        I’m a Computer Science student at the{' '}
-        <a href="https://uwaterloo.ca/">University of Waterloo</a>. These are some companies I
-        have worked for in the past:
+        I’m an Honours Computer Science co-op student at the{' '}
+        <a href="https://uwaterloo.ca/">University of Waterloo</a>, graduating in May 2028.
+        These are some companies I have worked for in the past:
       </p>
       <ul className="experience-list">
         <li>
@@ -155,7 +155,7 @@ const Hero = () => {
             &mdash;
           </span>
           <span>
-            <a href="https://www.commure.com/">Commure</a> (healthtech unicorn)
+            <a href="https://www.commure.com/">Commure</a> (HealthTech Unicorn)
           </span>
         </li>
         <li>
