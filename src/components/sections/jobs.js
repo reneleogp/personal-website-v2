@@ -7,9 +7,20 @@ import { usePrefersReducedMotion } from '@hooks';
 
 const StyledJobsSection = styled.section`
   max-width: 760px;
-  min-height: calc(100vh - var(--nav-scroll-height));
-  min-height: calc(100svh - var(--nav-scroll-height));
+  min-height: calc(100vh - var(--nav-scroll-height) - 97px);
+  min-height: calc(100svh - var(--nav-scroll-height) - 97px);
   scroll-margin-top: var(--nav-scroll-height);
+
+  @media (max-width: 768px) {
+    min-height: calc(100vh - var(--nav-scroll-height) - 149px);
+    min-height: calc(100svh - var(--nav-scroll-height) - 149px);
+    padding-bottom: 0;
+  }
+
+  @media (max-width: 480px) {
+    min-height: calc(100vh - var(--nav-scroll-height) - 167px);
+    min-height: calc(100svh - var(--nav-scroll-height) - 167px);
+  }
 
   .numbered-heading:after {
     top: 0;
