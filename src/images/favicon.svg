@@ -19,7 +19,27 @@
         fill: #7aa2ff;
       }
     }
+
+    #light:target ~ .mark {
+      fill: #f7f9fc;
+      stroke: #2563eb;
+    }
+
+    #light:target ~ .letter {
+      fill: #2563eb;
+    }
+
+    #dark:target ~ .mark {
+      fill: #0d1422;
+      stroke: #7aa2ff;
+    }
+
+    #dark:target ~ .letter {
+      fill: #7aa2ff;
+    }
   </style>
+  <g id="light" />
+  <g id="dark" />
   <polygon
     class="mark"
     points="50 4 92 28 92 74 50 98 8 74 8 28"

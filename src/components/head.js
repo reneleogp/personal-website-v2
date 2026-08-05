@@ -1,13 +1,34 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { Helmet } from 'react-helmet';
 import { useLocation } from '@reach/router';
 import { useStaticQuery, graphql } from 'gatsby';
+import faviconAsset from '@images/favicon.svg';
 
 // https://www.gatsbyjs.com/docs/add-seo-component/
 
 const Head = ({ title, description, image }) => {
   const { pathname } = useLocation();
+
+  useEffect(() => {
+    const syncFavicon = () => {
+      const favicon = document.getElementById('favicon');
+      const theme = document.documentElement.getAttribute('data-theme') === 'dark' ? 'dark' : 'light';
+
+      if (favicon) {
+        favicon.setAttribute('href', `${faviconAsset}#${theme}`);
+      }
+    };
+
+    const observer = new MutationObserver(syncFavicon);
+    observer.observe(document.documentElement, {
+      attributes: true,
+      attributeFilter: ['data-theme'],
+    });
+    syncFavicon();
+
+    return () => observer.disconnect();
+  }, []);
 
   const { site } = useStaticQuery(
     graphql`
@@ -43,6 +64,8 @@ const Head = ({ title, description, image }) => {
   return (
     <Helmet title={title} defaultTitle={seo.title} titleTemplate={`%s | ${defaultTitle}`}>
       <html lang="en" />
+
+      <link id="favicon" rel="icon" type="image/svg+xml" href={`${faviconAsset}#light`} />
 
       <meta name="description" content={seo.description} />
       <meta name="image" content={seo.image} />
