@@ -17,10 +17,6 @@ module.exports = {
       name: 'Timeline',
       url: '/#timeline',
     },
-    {
-      name: 'Contact',
-      url: '/#contact',
-    },
   ],
 
   colors: {
