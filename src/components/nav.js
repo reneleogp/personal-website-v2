@@ -214,7 +214,7 @@ const Nav = ({ isHome }) => {
   const ResumeLink = (
     <a
       className="resume-link"
-      href="/Rene_Gonzalez_resume.pdf"
+      href="/Rene_Gonzalez_Resume.pdf"
       target="_blank"
       rel="noopener noreferrer"
       aria-label="Resume (opens in a new tab)">

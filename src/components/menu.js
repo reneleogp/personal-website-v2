@@ -280,7 +280,7 @@ const Menu = () => {
                 ))}
                 <li>
                   <a
-                    href="/Rene_Gonzalez_resume.pdf"
+                    href="/Rene_Gonzalez_Resume.pdf"
                     className="resume-link"
                     target="_blank"
                     rel="noopener noreferrer"

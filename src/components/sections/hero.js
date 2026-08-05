@@ -170,7 +170,7 @@ const Hero = () => {
     </div>
   );
   const four = (
-    <a className="email-link" rel="noreferrer" href="/Rene_Gonzalez_resume.pdf">
+    <a className="email-link" rel="noreferrer" href="/Rene_Gonzalez_Resume.pdf">
       View my resume
     </a>
   );
