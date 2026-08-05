@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { email } from '@config';
 import { Side } from '@components';
+import { Icon } from '@components/icons';
 
 const StyledLinkWrapper = styled.div`
   display: flex;
@@ -20,19 +21,18 @@ const StyledLinkWrapper = styled.div`
   }
 
   a {
-    margin: 20px auto;
+    display: flex;
+    margin: 0 auto 20px;
     padding: 10px;
-    font-family: var(--font-mono);
-    font-size: var(--fz-xxs);
-    line-height: var(--fz-lg);
-    letter-spacing: 0.1em;
-    writing-mode: vertical-rl;
 
     &:hover,
     &:focus {
       transform: translateY(-3px);
-      text-decoration: underline;
-      text-underline-offset: 50%;
+    }
+
+    svg {
+      width: 20px;
+      height: 20px;
     }
   }
 `;
@@ -40,7 +40,9 @@ const StyledLinkWrapper = styled.div`
 const Email = ({ isHome }) => (
   <Side isHome={isHome} orientation="right">
     <StyledLinkWrapper>
-      <a href={`mailto:${email}`}>{email}</a>
+      <a href={`mailto:${email}`} aria-label={`Email ${email}`} title="Email">
+        <Icon name="Email" />
+      </a>
     </StyledLinkWrapper>
   </Side>
 );
