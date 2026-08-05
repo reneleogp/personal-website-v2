@@ -7,6 +7,8 @@ import { usePrefersReducedMotion } from '@hooks';
 
 const StyledJobsSection = styled.section`
   max-width: 760px;
+  min-height: calc(100vh - var(--nav-scroll-height));
+  min-height: calc(100svh - var(--nav-scroll-height));
   scroll-margin-top: var(--nav-scroll-height);
 
   .numbered-heading:after {
